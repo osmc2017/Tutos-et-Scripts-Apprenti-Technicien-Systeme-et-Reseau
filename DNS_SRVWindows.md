@@ -56,6 +56,8 @@ Pour vérifier la configuration DNS, utilisez la commande nslookup :
 
 - nslookup sousdomawilderine.domaine.extension : pour connaître l’adresse IP associée à un domaine.
 
+- Dans les paramètres réseau IPV4 du client et serveur, il faut renseigner l'adresse du serveur DNS
+
 - Vider le cache DNS avant de tester avec ipconfig /flushdns pour garantir des résultats à jour.
 
 Exemple de commande :
