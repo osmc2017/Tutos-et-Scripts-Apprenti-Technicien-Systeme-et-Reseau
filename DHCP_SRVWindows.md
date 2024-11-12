@@ -6,7 +6,7 @@
 
 Une fois la vm windows server démarré (et à jour) on ajoute le rôle de serveur DHCP à notre serveur en suivant les étapes suivantes:
 
-	- Tout d'abord on donne une IP fixe au serveur (172.20.0.5/24 dans notre cas)172
+	- Tout d'abord on donne une IP fixe au serveur (172.20.0.101/24 dans notre cas)
 	- cliquer sur Add Roles and Features
 	- chose Role-based or …
 	- chose your server
