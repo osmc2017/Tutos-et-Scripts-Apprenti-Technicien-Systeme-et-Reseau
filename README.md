@@ -49,7 +49,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [**TUTO**](TUTO)
     - [Tuto Réseaux](TUTO/Tuto_Réseaux)
         * [Notion Git](TUTO/Tuto_Réseaux/GIT_NOTION.md)
-        * [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md) (multi plateformes)
+        * [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md)
         * [Wireshark](TUTO/Tuto_Réseaux/Wireshark.md)
         * [setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
         * [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
