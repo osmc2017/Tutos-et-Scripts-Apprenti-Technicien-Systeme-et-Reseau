@@ -21,8 +21,8 @@
         * [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md) (multi plateformes)
         * [Wireshark](TUTO/Tuto_Réseaux/Wireshark.md)
         * [setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
-        * [Conversion Binaire et Héxa](TUTO\Tuto_Réseaux\conversion_binaire_hexa.md)
-        * [Plan d'adressage IP](TUTO\Tuto_Réseaux\Plan_adressage.md)
+        * [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
+        * [Plan d'adressage IP](TUTO/Tuto_Réseaux/Plan_adressage.md)
         
 
     - [Tuto Linux](TUTO/Tuto_Linux)
