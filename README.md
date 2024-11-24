@@ -16,7 +16,7 @@
         * [Clone de VM](SCRIPT/POWERSHELL/CLONE_VM_POWERSHELL.ps1)
 
 - [**TUTO**](TUTO)
-    - [Tuto Réseaux](TUTO/Tuto_Réseaux) (il contient des tutoriels utilisables sur différents types de machines.)
+    - [Tuto Réseaux](TUTO/Tuto_Réseaux)
         * [Notion Git](TUTO/Tuto_Réseaux/GIT_NOTION.md)
         * [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md) (multi plateformes)
         * [Wireshark](TUTO/Tuto_Réseaux/Wireshark.md)
