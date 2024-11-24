@@ -1,4 +1,35 @@
-# Ce dépôt permet de centraliser des tutoriels et des scripts utiles à la formation TSSR et à l'administration système et réseaux.
+# Tutos et Scripts - Apprenti Technicien Système et Réseau
+
+Bienvenue dans mon dépôt GitHub ! Ce dépôt est un espace où je partage mes **tutoriels**, **scripts**, et autres ressources utiles dans mon parcours d'**apprenti administrateur réseau et système**.
+
+## Objectif
+
+L'objectif de ce dépôt est de centraliser tout le contenu lié à mon apprentissage et aux projets que je mène dans le domaine des technologies **réseaux** et **systèmes**. Vous y trouverez des **scripts** pratiques, des **astuces** et des **tutoriels** sur divers outils et technologies que je rencontre au quotidien.
+
+## Contenu
+
+Voici un aperçu de ce que vous trouverez dans ce dépôt :
+
+- **Scripts** : Automatisation de tâches courantes pour la gestion des systèmes et des réseaux.
+- **Tutoriels** : Guides pratiques sur des sujets techniques, comme la configuration de serveurs, la gestion des réseaux, l'utilisation de VirtualBox, etc.
+- **Ressources** : Fichiers de configuration, exemples de code, et autres documents utiles pour un technicien en réseau et système.
+
+## Pourquoi ce dépôt ?
+
+En tant qu'apprenti, je rencontre souvent des problèmes techniques et j'écris des solutions ou je découvre des outils que je trouve intéressants. Ce dépôt me permet de partager mes découvertes et mes solutions, tout en facilitant mon apprentissage grâce à une documentation et des ressources organisées.
+
+## Contribuer
+
+Ce dépôt est principalement destiné à mon apprentissage personnel, mais si vous trouvez des erreurs ou souhaitez contribuer, n'hésitez pas à ouvrir une **issue** ou à soumettre une **pull request**. Toute aide est la bienvenue !
+
+## Contact
+
+Si vous avez des questions ou des suggestions, vous pouvez me contacter via les issues de ce dépôt.
+
+---
+
+Merci de votre visite et bonne exploration ! 🚀
+
 
 ## **Sommaire**
 
@@ -8,7 +39,7 @@
         * [Quête création de dossier](SCRIPT/BASH/quete_crea_dossier.sh)
         * [Quête Sauvegarde fichier](SCRIPT/BASH/svg_quete_bash.sh)
         * [Création de VM](SCRIPT/BASH/CREA_VM_BASH.sh)
-        * [Clone de Vm](https://github.com/osmc2017/tuto-et-script/blob/5069f3a0397cf0002e2b391f358cea3a205bad72/SCRIPT/BASH/CLONE_VM_BASH.sh)
+        * [Clone de Vm](SCRIPT/BASH/CLONE_VM_BASH.sh)
         
     - [Script Powershell](SCRIPT/POWERSHELL)
         * [Quête création de dossier](SCRIPT/POWERSHELL/CREA_DOSSIER_POWERSHELL.ps1)
