@@ -1,4 +1,4 @@
-# Ce dépôt permet de centraliser des tutoriels et des scripts utiles à la formation TSSR et à l'administration système et réseau.
+# Ce dépôt permet de centraliser des tutoriels et des scripts utiles à la formation TSSR et à l'administration système et réseaux.
 
 ## **Sommaire**
 
@@ -16,11 +16,14 @@
         * [Clone de VM](SCRIPT/POWERSHELL/CLONE_VM_POWERSHELL.ps1)
 
 - [**TUTO**](TUTO)
-    - [Tuto général](TUTO/Tuto_général) (il contient des tutoriels utilisables sur différents types de machines.)
-        * [Notion Git](TUTO/Tuto_général/GIT_NOTION.md)
-        * [SSH sans MDP](TUTO/Tuto_général/SSH_SANS_MDP.md) (multi plateformes)
-        * [Wireshark](TUTO/Tuto_général/Wireshark.md)
-        * [setup routeur Cisco](TUTO/Tuto_général/setup_router_cisco.md)
+    - [Tuto Réseaux](TUTO/Tuto_Réseaux) (il contient des tutoriels utilisables sur différents types de machines.)
+        * [Notion Git](TUTO/Tuto_Réseaux/GIT_NOTION.md)
+        * [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md) (multi plateformes)
+        * [Wireshark](TUTO/Tuto_Réseaux/Wireshark.md)
+        * [setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
+        * [Conversion Binaire et Héxa](TUTO\Tuto_Réseaux\conversion_binaire_hexa.md)
+        * [Plan d'adressage IP](TUTO\Tuto_Réseaux\Plan_adressage.md)
+        
 
     - [Tuto Linux](TUTO/Tuto_Linux)
         * [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
