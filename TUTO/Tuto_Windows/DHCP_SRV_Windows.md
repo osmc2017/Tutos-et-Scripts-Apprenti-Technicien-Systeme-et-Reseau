@@ -1,37 +1,46 @@
-# Configuration d'un serveur DHCP sur Windows server 22
+# Configuration d'un serveur DHCP sur Windows Server 2022
 
+## 1. Configuration du service DHCP avec paramétrage de la plage IP
 
-1) Configuration du service DHCP avec paramétrage plage IP
+Une fois la machine virtuelle Windows Server démarrée (et à jour), ajoute le rôle de serveur DHCP à ton serveur en suivant les étapes suivantes :
 
+### Étapes pour installer le rôle DHCP :
 
-Une fois la vm windows server démarré (et à jour) on ajoute le rôle de serveur DHCP à notre serveur en suivant les étapes suivantes:
+1. **Attribuer une IP fixe au serveur** (dans notre exemple, `172.20.0.101/24`).
+2. **Ouvrir le Gestionnaire de serveur** et cliquer sur **Ajouter des rôles et des fonctionnalités**.
+3. Sélectionner **Installation basée sur un rôle ou une fonctionnalité**.
+4. Choisir le serveur sur lequel installer le rôle.
+5. Sélectionner **Serveur DHCP**, puis cliquer sur **Ajouter des fonctionnalités** dans la fenêtre contextuelle. Cliquer ensuite sur **Suivant**.
+6. Passer les options de **Fonctionnalités** et cliquer sur **Suivant**.
+7. Dans la section **DHCP**, s'assurer que l'adresse IP fixe est bien configurée, puis cliquer sur **Suivant**.
+8. Cliquer sur **Installer** sans avoir besoin de redémarrer.
 
-	- Tout d'abord on donne une IP fixe au serveur (172.20.0.101/24 dans notre cas)
-	- cliquer sur Add Roles and Features
-	- chose Role-based or …
-	- chose your server
-	- select DHCP server and click Add Features dans la fenêtre contextuelle puis cliquer sur Next
-	- on passe les Features en appuyant sur next
-	- On clique sur next une nouvelle fois dans la section DHCP (bien avoir une ip fixe)
-	- et maintenant on clique sur install sans avoir besoin de redémarrer
+### Paramétrage du service DHCP :
 
-Maintenant que le service DHCP est installé on le paramètre:
+Une fois le service DHCP installé, il reste à le configurer :
 
-	- aller dans la section DHCP, cliquez droit sur votre serveur et cliquez sur DHCP manager
-	- dans la bar de gauche sélectionner votre serveur puis clique droit sur ipv4 et enfin new scope;
-	- appuyez sur next, puis donner un nom à votre étendue (serveur_dhcp pour l 'exo) puis cliquez sur next
-	- entrez l'adresse ip de début (172.20.0.100) et ensuite celle de fin (172.20.0.200) et indiquer 24 dans lenght puis cliquez sur next
-	- cliquez encore sur next (on ne reserve pas d'adresse ip dans cette plage) et encore next (on ne touche pas au bail pour l'instant) et enfin on choisi yes, i want… 	et next encore une fois.
-	- Pour l'instant on ne paramètre pas de default Gateway, pareil pour le dns donc on clique deux fois sur next
-	- Pareil pour WINS server on laisse vide et next,
-	- on choisi yes, i want… et on clique sur next et enfin sur finish
+1. Ouvrir le **Gestionnaire DHCP** en cliquant droit sur le serveur dans la section DHCP.
+2. Dans la barre de gauche, sélectionner votre serveur, puis cliquer droit sur **IPv4** et choisir **Nouvelle étendue**.
+3. Cliquer sur **Suivant**, puis donner un nom à votre étendue (par exemple : `serveur_dhcp`) et cliquer sur **Suivant**.
+4. Entrer l'adresse IP de début (`172.20.0.100`) et l'adresse IP de fin (`172.20.0.200`), puis spécifier le **Masque de sous-réseau** en indiquant **24**. Cliquer sur **Suivant**.
+5. Cliquer sur **Suivant** (on ne réserve pas d'adresses IP dans cette plage).
+6. Cliquer encore sur **Suivant** (on ne modifie pas les paramètres de bail pour l'instant).
+7. Choisir **Oui, je veux...** pour activer l'étendue, puis cliquer sur **Suivant** et enfin sur **Terminer**.
 
-On voit bien que notre scope est créer on peut maintenant réserver l'adresse IP pour notre machine particulière:
+### Réservation d'une adresse IP pour une machine spécifique :
 
-	- Dans le DHCP manager à droite, déroulez le scope créé et clique droit sur réservation puis new réservation;
-	- Ajoutez le nom de votre périphérique, l'adresse IP qui lui ai réservé (172.20.0.10) ainsi que son adresse MAC puis choisissez DHCP dans supported types.
+1. Dans le **Gestionnaire DHCP**, dérouler l'étendue créée à droite et cliquer droit sur **Réservations**, puis sélectionner **Nouvelle réservation**.
+2. Ajouter le **nom du périphérique**, l'**adresse IP réservée** (par exemple : `172.20.0.10`), ainsi que son **adresse MAC**.
+3. Choisir **DHCP** dans les types supportés.
 
+---
 
-2) Configuration des cartes réseaux des VMs
+## 2. Configuration des cartes réseau des VMs
 
-Pour que ce système fonctionne entre plusieurs VMs il faut mettre nos Vms sur un réseau interne. Pour cela allez dans les parametres de vos VMs, puis dans réseau et la vous choisissez en mode d'accés réseau: réseau interne, et ensuite sélectionnez le même réseau (ici intnet) pour vos deux VMs.
+Pour que le système fonctionne entre plusieurs machines virtuelles (VMs), il est nécessaire de configurer un **réseau interne**. Voici les étapes :
+
+1. Aller dans les **paramètres des VMs**.
+2. Dans la section **Réseau**, choisir le mode d'accès **Réseau interne**.
+3. Sélectionner le même réseau pour les deux VMs (par exemple : `intnet`).
+
+Cela permet à vos VMs de communiquer entre elles via le réseau interne.

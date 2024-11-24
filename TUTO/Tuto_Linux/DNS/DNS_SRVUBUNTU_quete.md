@@ -1,36 +1,45 @@
-SERVEUR DNS SUR DEBIAN
+# SERVEUR DNS SUR DEBIAN
+
 -----------------------------------------------------------------------
 
-**Installation de Bind 9**
+## Installation de Bind 9
 
-- on met a jour les paquets avec:
->sudo apt update 
->sudo apt upgrade
+- On met à jour les paquets avec:
+```bash
+sudo apt update 
+sudo apt upgrade
+```
 
 - On installe les paquets:
->sudo apt install -y bind9 bind9utils bind9-doc dnsutils
+```bash
+sudo apt install -y bind9 bind9utils bind9-doc dnsutils
+```
 
-- On met une IP fix pour notre serveur DNS (ici 192.168.0.40/24)
+- On met une IP fixe pour notre serveur DNS (ici `192.168.0.40/24`)
 
-- Si on travail sur VM on met notre carte sur réseau interne
+- Si on travaille sur une VM, on met notre carte réseau sur réseau interne
 
-- On redémarre les service réseau:
->sudo systemctl restart NetworkManager
+- On redémarre les services réseau:
+```bash
+sudo systemctl restart NetworkManager
+```
+
 -----------------------------------------------------------------------
 
-**Configuration de Bind**
+## Configuration de Bind
 
-- on se déplace dans le dossier bind:
->cd /etc/bind/
+- On se déplace dans le dossier bind:
+```bash
+cd /etc/bind/
+```
 
-- On édite le fichier avec `sudo nano named.conf.options` afin:
-    * Autoriser la requête sur votre DNS à partir de votre réseau privé (comme son nom l'indique, seuls les systèmes de votre réseau privé peuvent interroger le serveur DNS pour la traduction du nom en IP et vice-versa)
+- On édite le fichier avec `sudo nano named.conf.options` afin de :
+    * Autoriser la requête sur votre DNS à partir de votre réseau privé
     * Autoriser les requêtes récursives
-    * Spécifiez le port DNS ( 53)
-    * Redirecteurs (la requête DNS sera transmise aux redirecteurs lorsque 
-    * votre serveur DNS local ne sera pas en mesure de résoudre la requête)
-- On a donc rajouter dans le fichier: 
-``` 
+    * Spécifier le port DNS (53)
+    * Configurer les redirections de requêtes DNS
+- On a donc rajouté dans le fichier:
+```bash
 acl internal-network {
 192.168.0.0/24;
 };
@@ -45,8 +54,8 @@ options {
 };
 ```
 
-- On édite maintenant le fichier `named.conf.local` afin de définir les fichiers de zone pour notre domaine en rajoutant:
-```
+- On édite maintenant le fichier `named.conf.local` afin de définir les fichiers de zone pour notre domaine en rajoutant :
+```bash
 zone "linuxtechi.local" IN {
         type master;
         file "/etc/bind/forward.linuxtechi.local";
@@ -58,11 +67,14 @@ zone "0.168.192.in-addr.arpa" IN {
         allow-update { none; };
 };
 ```
-- On copie le fichier db.local de cette façon:
->sudo cp db.local forward.linuxtechi.local
+
+- On copie le fichier `db.local` de cette façon:
+```bash
+sudo cp db.local forward.linuxtechi.local
+```
 
 - Maintenant on édite le nouveau fichier `forward.linuxtechi.local` avec:
-```
+```bash
 $TTL 604800
 @ IN SOA primary.linuxtechi.local. root.primary.linuxtechi.local. (
                                    2022072651 ; Serial
@@ -86,11 +98,14 @@ mail    IN  A    192.168.0.60
 ;CNAME Record
 ftp     IN CNAME www.linuxtechi.local.
 ```
-- On copie le fichier db.local de cette façon:
->sudo cp db.local reverse.linuxtechi.local
+
+- On copie le fichier `db.local` de cette façon:
+```bash
+sudo cp db.local reverse.linuxtechi.local
+```
 
 - Maintenant on édite le nouveau fichier `reverse.linuxtechi.local` pour zone directe et inversée mentionnés avec:
-```
+```bash
 $TTL 86400
 @ IN SOA linuxtechi.local. root.linuxtechi.local. (
                            2022072752 ;Serial
@@ -108,44 +123,67 @@ primary   IN  A    192.168.0.40
 50        IN PTR   www.linuxtechi.local.
 60        IN PTR   mail.linuxtechi.local.
 ```
-- Il faut ensuite modifier le fichier `/etc/default/named` afin que le service DNS ecoute IPV4:
->OPTIONS = "-u bind -4"
+
+- Il faut ensuite modifier le fichier `/etc/default/named` afin que le service DNS écoute en IPV4:
+```bash
+OPTIONS = "-u bind -4"
+```
 
 - On démarre, on active le service BIND et on vérifie le status:
->sudo systemctl start named
->sudo systemctl enable named
->sudo systemctl status named
+```bash
+sudo systemctl start named
+sudo systemctl enable named
+sudo systemctl status named
+```
 
--On autorise le port 53:
-> sudo ufw allow 53
+- On autorise le port 53:
+```bash
+sudo ufw allow 53
+```
+
 ---
-**Validation de la syntaxe de Bind**
 
-- On peut vérifier la syntaxe des différent fichier et si nous n'avons aucun retour tout est bon:
->sudo named-checkconf /etc/bind/named.conf.local
->sudo named-checkzone linuxtechi.local /etc/bind/forward.linuxtechi.local
+## Validation de la syntaxe de Bind
+
+- On peut vérifier la syntaxe des différents fichiers et si nous n'avons aucun retour tout est bon:
+```bash
+sudo named-checkconf /etc/bind/named.conf.local
+sudo named-checkzone linuxtechi.local /etc/bind/forward.linuxtechi.local
 zone linuxtechi.local/IN: loaded serial 2022072651
 OK
->sudo named-checkzone linuxtechi.local /etc/bind/reverse.linuxtechi.local
+sudo named-checkzone linuxtechi.local /etc/bind/reverse.linuxtechi.local
 zone linuxtechi.local/IN: loaded serial 2022072752
 OK
----
-**On test notre serveur avec Dig et Nslookup**
-
-- sur une autre machine ubuntu on modifie le fichier `/etc/resolv.conf` pour qu'il pointe notre serveur DNS:
 ```
+
+---
+
+## On test notre serveur avec Dig et Nslookup
+
+- Sur une autre machine Ubuntu, on modifie le fichier `/etc/resolv.conf` pour qu'il pointe vers notre serveur DNS:
+```bash
 search linuxtechi.local
 nameserver 192.168.0.40
 ```
-- Si dig n'est pas installer on l'installe avec `sudo apt install dnsutils -y` 
+
+- Si `dig` n'est pas installé, on l'installe avec:
+```bash
+sudo apt install dnsutils -y
+```
 
 - On lance la commande suivante afin de trouver notre serveur et les informations associées:
->dig ptimary.linuxtechi.local
+```bash
+dig primary.linuxtechi.local
+```
 
-- Maintenant on fait une recherche inversé:
->dig -x 192.168.0.40
+- Maintenant on fait une recherche inversée:
+```bash
+dig -x 192.168.0.40
+```
 
-- On utiliser nslookup pour confirmer la sortie de dig:
->nslookup.primary.linuxtechi.local
+- On utilise `nslookup` pour confirmer la sortie de `dig`:
+```bash
+nslookup primary.linuxtechi.local
+```
 
-- Si nous n'avons aucune erreur c'est que notre serveur DNS et ces services fonctionne correctement.
+- Si nous n'avons aucune erreur, c'est que notre serveur DNS et ses services fonctionnent correctement.

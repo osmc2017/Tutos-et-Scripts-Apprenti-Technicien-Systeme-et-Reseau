@@ -1,17 +1,10 @@
-## Creation de GPO puis gestion droit panneau de configuration
+## Création de GPO et gestion des droits du Panneau de configuration
 
-- Aller dans tools, puis Group Policy Management;
-
-- Ensuite On déroule la forêt concerné, puis lorsque l'on voit le groupe que l'on veut modifier (Wilders_students dans l'exo) on clique droit dessus et : `Create a GPO in this domain, and Link it here`;
-
-- On donne un nom à notre GPO (Wilders dans l'exo) et on clique sur `OK`;
-
-- Une fois le GPO créé, on clique droit dessus et `edit`;
-
-- Dans User Configuration on va dans `policies`, puis `administrative Templates` et enfin `Control Panel`;
-
-- On double clique sur `Prohibit access to Control Panel and PC setting`;
-
-- Une fois là on met sur `disabled`puis on clique sur `apply`puis sur `OK`;
-
-- Maintenant que tout est OK on peut fermer les fenêtres.
+- Aller dans **Tools**, puis **Group Policy Management**.
+- Ensuite, dérouler la forêt concernée, puis, lorsque l'on trouve le groupe que l'on veut modifier (par exemple, **Wilders_students** dans l'exercice), faire un clic droit dessus et choisir **Create a GPO in this domain, and Link it here**.
+- Donner un nom à notre GPO (par exemple, **Wilders** dans l'exercice), puis cliquer sur **OK**.
+- Une fois le GPO créé, faire un clic droit dessus et choisir **Edit**.
+- Dans **User Configuration**, aller dans **Policies**, puis **Administrative Templates**, et enfin **Control Panel**.
+- Double-cliquer sur **Prohibit access to Control Panel and PC settings**.
+- Une fois là, définir sur **Disabled**, puis cliquer sur **Apply** et enfin sur **OK**.
+- Maintenant que tout est correct, fermer les fenêtres.

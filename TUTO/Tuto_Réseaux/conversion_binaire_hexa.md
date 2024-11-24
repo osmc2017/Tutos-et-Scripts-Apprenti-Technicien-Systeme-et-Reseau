@@ -10,7 +10,7 @@ Il suffit de multiplier chaque chiffre du nombre binaire par la valeur de la pui
 |--------------------|---------|---------|---------|---------|---------|---------|---------|---------|
 | **Valeur**         | 128     | 64      | 32      | 16      | 8       | 4       | 2       | 1       |
 
-- Exemple pour le nombre binaire 10011010, si on le place dans le tableau des puissances de 2 :
+- Exemple pour le nombre binaire `10011010`, si on le place dans le tableau des puissances de 2 :
 
 | **Puissance de 2** | **2^7** | **2^6** | **2^5** | **2^4** | **2^3** | **2^2** | **2^1** | **2^0** |
 |--------------------|---------|---------|---------|---------|---------|---------|---------|---------|
@@ -18,7 +18,7 @@ Il suffit de multiplier chaque chiffre du nombre binaire par la valeur de la pui
 | **Nombre en binaire** | 1   | 0       | 0       | 1       | 1       | 0       | 1       | 0       |
 | **Calcul**         | 1 x 128 | 0 x 64  | 0 x 32  | 1 x 16  | 1 x 8   | 0 x 4   | 1 x 2   | 0 x 1   |
 
-- Exemple pour le nombre 154 :
+- Exemple pour le nombre `154` :
 
 | **Puissance de 2** | **2^7** | **2^6** | **2^5** | **2^4** | **2^3** | **2^2** | **2^1** | **2^0** |
 |--------------------|---------|---------|---------|---------|---------|---------|---------|---------|
@@ -96,7 +96,7 @@ Pour convertir un nombre hexadécimal en binaire, suivez les étapes suivantes :
 
 #### Utilisation d'un tableau pour la conversion
 
-On peut également utiliser ce tableau pour le calcul en binaire: 
+On peut également utiliser ce tableau pour le calcul en binaire : 
 
 | **Puissance de 2** | **2^3** | **2^2** | **2^1** | **2^0** |
 |--------------------|---------|---------|---------|---------|
@@ -128,13 +128,13 @@ Ainsi, **9A** en hexadécimal est égal à **10011010** en binaire.
 
 ## Nota
 
-Le préfixe 0x est utilisé pour indiquer qu'un nombre est écrit en hexadécimal.
+Le préfixe `0x` est utilisé pour indiquer qu'un nombre est écrit en hexadécimal.
 
-En informatique, hexadécimal est un système de numération en base 16, où les chiffres vont de 0 à 9 et les lettres A à F (pour représenter 10 à 15). Par exemple, 0xA représente le chiffre 10 en décimal.
+En informatique, hexadécimal est un système de numération en base 16, où les chiffres vont de 0 à 9 et les lettres A à F (pour représenter 10 à 15). Par exemple, `0xA` représente le chiffre 10 en décimal.
 
-Le préfixe 0x est donc une convention pour identifier un nombre comme étant en base 16 plutôt qu'en base 10 (décimal).
+Le préfixe `0x` est donc une convention pour identifier un nombre comme étant en base 16 plutôt qu'en base 10 (décimal).
 
-## tableau des équivalences
+## Tableau des équivalences
 
 ### Tableau de conversion : Décimal ↔ Hexadécimal ↔ Binaire
 

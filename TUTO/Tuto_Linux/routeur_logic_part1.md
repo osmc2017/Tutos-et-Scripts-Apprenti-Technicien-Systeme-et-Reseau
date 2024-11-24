@@ -1,85 +1,102 @@
-# Routeur logique sous Debian 1er partie
+# Routeur logique sous Debian (1ère partie)
 
 ## Explication
 
-on fait un routeur qui permet de faire communiquer un réseau privé et internet
+On crée un routeur permettant de faire communiquer un réseau privé et Internet.
 
-## Préparation du Labo
-- labo:
-    - 1 routeur debian
-    - 2 clients windows
- 
- Clients sur le même réseau interne et configurer les adresses ip des clients
- - 192.168.1.1/24   gateway: 192.168.1.254
- - 192.168.2.2/24   gateway: 192.168.2.254
+## Préparation du labo
+- **Labo** :
+    - 1 routeur Debian
+    - 2 clients Windows
 
- Et on vérifie avec `ipconfig`
+Les clients sont sur le même réseau interne. Il faut configurer les adresses IP des clients :
+- `192.168.1.1/24` avec passerelle : `192.168.1.254`
+- `192.168.2.2/24` avec passerelle : `192.168.2.254`
 
+Vérifiez avec la commande `ipconfig`.
 
-On paramètre IP sur le serveur Débian (avec deux cartes réseaux)
-> `nano /etc/network/interfaces`
+## Paramétrage IP sur le serveur Debian (avec deux cartes réseau)
 
-> enp0s3 en `static` et address `192.168.1.254/24` On sauvegarde puis `systemctl restart networking.service`
+- Ouvrir le fichier de configuration réseau avec :  
+  `nano /etc/network/interfaces`
 
-> enp0s8 en `static` et address `192.168.2.254/24` On sauvegarde puis `systemctl restart networking.service`
+- Configurer `enp0s3` en `static` avec l'adresse `192.168.1.254/24`. Sauvegardez et relancez le service avec :  
+  `systemctl restart networking.service`
 
-On peut se connecter en ssh depuis le client ( pour copier coller)
+- Configurer `enp0s8` en `static` avec l'adresse `192.168.2.254/24`. Sauvegardez et relancez le service avec :  
+  `systemctl restart networking.service`
 
-> On test depuis les clients si on peut ping les nouvelles passerelles du serveur.
+Vous pouvez vous connecter en SSH depuis les clients pour copier/coller les configurations.
 
-> On lance Wireshark sur nos client et on surveille le trafic Ethernet.
+- Testez depuis les clients si vous pouvez pinger les nouvelles passerelles du serveur.
+
+- Lancez Wireshark sur vos clients et surveillez le trafic Ethernet.
 
 ## Activation du routage sur le serveur
 
-> On vérifie si le routage est activé avec `cat /proc/sys/net/ipv4/ip_forward` et si on a 0 alors il est désactivé.
+- Vérifiez si le routage est activé avec la commande :  
+  `cat /proc/sys/net/ipv4/ip_forward`. Si la valeur est `0`, le routage est désactivé.
 
 ```
 ( si on le passe a 1 avec `echo 1 > /proc/sys/net/ipv4/ip_forward` et on revérifie et on a bien un 1; Les ping fonctionnent car le routeur est sur les deux réseaux mais que en interne, on veut faire du NAT. /proc chargé dans la ram donc cette méthode n'est pas pérenne car perdu au redémarrage.)
 ```
 
-> Ce fichier est dans le disque donc on fait `nano /etc/sysctl.conf` et décommente `net.ipv4.ip_forward=1` puis `sysctl -p`pour activer le routage et on redémarre
+- Pour rendre cette configuration persistante, éditez le fichier `nano /etc/sysctl.conf`, décommentez la ligne `net.ipv4.ip_forward=1`, puis appliquez les changements avec :  
+  `sysctl -p`
 
-> On vérifie `cat /proc/sys/net/ipv4/ip_forward` pour voir si tout est bien activé
+- Vérifiez de nouveau avec `cat /proc/sys/net/ipv4/ip_forward` pour confirmer que le routage est activé.
 
-> On test avec des ping et sur qireshark on voit que les machines communiquent directement.
+- Testez avec des pings. Sur Wireshark, vous devriez voir que les machines communiquent directement.
 
-## Régle NAT sur le serveur (netfilter /**nftable** /iptable parefeu intégré)
+## Règle NAT sur le serveur (Netfilter, nftables, iptables)
 
-On va créer une table, mettre des chaîne et paramétrés les "hook" (point d'accroche) et y mettre des règles:
+On va créer une table, ajouter des chaînes et définir des règles NAT :
 
-> Création de la table table_NAT en IP avec `nft add table ip table_NAT`
+- Créez la table NAT en IP avec :  
+  `nft add table ip table_NAT`
 
-> on lites les tables avec `nft list tables`et on la voit 
+- Listez les tables avec :  
+  `nft list tables` et vous verrez la table `table_NAT`.
 
-> on créé la chaîne avec `nft add chain ip table_NAT chain_postrouting {type nat hook postrouting priority 0 \; }`
+- Créez la chaîne pour le NAT avec :  
+  `nft add chain ip table_NAT chain_postrouting {type nat hook postrouting priority 0 \; }`
 
-> On vérifie notre chaîne avec `nft list table ip table_NAT` ;
+- Vérifiez la chaîne avec :  
+  `nft list table ip table_NAT`
 
-> On écrit notre régle `nft add rule table_NAT chain_postrouting ip saddr 192.168.1.0/24 oif enp0s8 snat 192.168.2.254`
+- Ajoutez la règle pour le NAT :  
+  `nft add rule table_NAT chain_postrouting ip saddr 192.168.1.0/24 oif enp0s8 snat 192.168.2.254`
 
-> On vérifie notre regle avec `nft list table ip table_NAT` ;
+- Vérifiez la règle avec :  
+  `nft list table ip table_NAT`
 
-Maintenant quand on va tester avec un `ping`et on voit, via wireshark que maintenant c'est le serveur qui envoit le ping au client 2 mais le 1, recoit  du client 2 directement. On va paramétrer pour l'autre client.
+Maintenant, testez avec un `ping` et utilisez Wireshark pour observer que le serveur envoie le ping au client 2, mais que le client 1 reçoit directement du client 2. Vous devrez configurer la même chose pour l'autre client.
 
-> On ajoute une règle: `nft add rule table_NAT chain_postrouting ip saddr 192.168.2.0/24 oif enp0s3 snat 192.168.1.254`
+- Ajoutez une règle pour l'autre client :  
+  `nft add rule table_NAT chain_postrouting ip saddr 192.168.2.0/24 oif enp0s3 snat 192.168.1.254`
 
-On fait un ping sur l'autre client et tout est bon.
+- Testez avec un ping de l'autre client, et tout devrait être opérationnel.
 
-> On copie nos règle dans un fichier `nft list table table_NAT > myrules.nft` en cas de coupure.
+- Sauvegardez vos règles dans un fichier avec :  
+  `nft list table table_NAT > myrules.nft` au cas de coupure.
 
-## En cas de redémarrage On fait de façon que la config de NATse charge au démarrage
+## En cas de redémarrage : chargez la configuration NAT au démarrage
 
-> nano /etc/network/interface
+- Ouvrez le fichier de configuration réseau avec :  
+  `nano /etc/network/interfaces`
 
-> on rajoute:
+- Ajoutez la ligne suivante pour charger la table NAT après l'activation des cartes réseau :
+
 ```
-# Command equi charge la table_NFT  aprés l'activation des cartes réseaux
+# Commandeq ui charge la table_NFT aprés l'activation des cartes réseaux
 pre-up nft -f /root/myrules.nft #mauvaise pratique de mettre dans root
 ```
 
-> Maintenant on n'est plus censé perdre la config au redémarrage du service:
-> `systemctl restart networking.service`
+
+- Maintenant, la configuration de NAT ne devrait plus être perdue après un redémarrage. Testez avec :  
+`systemctl restart networking.service`
 
 # La suite au prochain épisode.
+
 
 

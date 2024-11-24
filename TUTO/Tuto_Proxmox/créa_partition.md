@@ -1,50 +1,101 @@
 # Configurer un disque sur Proxmox
 
-## Préparation du disque
-- On liste les disque avec `lsblk`
+## **Préparation du disque**
 
-- on partionne le disque choisi avec `fdisk /dev/sdX` puis 
-    - on créé une nouvelle partition avec `n`
-    - On choisi le type de partition `p`pour primaire ou `e` pour extended
-    - On choisi le numéro de port (le plus petit par défaut) puis le début de partition (on laisse par défaut)
-    - On choisi le volume de notre partition `+XG` ou `+XT` X étant le volume;
-    - Une fois nos partition terminé on tape `w` pour écrire et enfin on quitte.
+1. **Lister les disques disponibles** :
+    ```
+    lsblk
+    ```
 
-- On verifie avec `lsblk` que tout est ok
+2. **Partitionner le disque choisi avec `fdisk`** :
+    - Exécuter la commande `fdisk /dev/sdX` où `X` représente la lettre du disque que vous voulez partitionner.
+    - Créer une nouvelle partition avec `n`.
+    - Choisir le type de partition :
+        - `p` pour une partition primaire.
+        - `e` pour une partition étendue.
+    - Choisir le numéro de partition (le plus petit par défaut).
+    - Définir le début de la partition (laissez par défaut).
+    - Spécifier la taille de la partition (ex. `+XG` pour un volume de X gigaoctets ou `+XT` pour X téraoctets).
+    - Une fois la partition terminée, tapez `w` pour écrire les modifications et quitter.
 
-- On formate notre partition (ex pour ext4):
-	- `mkfs.ext4 /dev/sdb/sdX..`
+3. **Vérification** :
+    - Vérifiez la configuration du disque avec `lsblk`.
 
-- On créé notre point de montage et on monte:
-	- `mkdir /mnt/achoisir`
-	- `mount /dev/sdX.. /mnt/achoisir`
+4. **Formater la partition** (par exemple, en `ext4`) :
+    ```
+    mkfs.ext4 /dev/sdb1
+    ```
 
-- On vérifie avec `lsblk`
+5. **Créer le point de montage et monter la partition** :
+    - Créer le répertoire de montage :
+      ```
+      mkdir /mnt/achoisir
+      ```
+    - Monter la partition :
+      ```
+      mount /dev/sdb1 /mnt/achoisir
+      ```
 
-- Récupération de l'ID et édition de fstab:
-    - avec `blkid` on récupère les ID des disk (copié/collé fonctionne via interface graphique proxmox);
-    - On édite avec `nano /etc/fstab` de cette façon:
-        - `UUID=1234-ABCD /mnt/achoisir ext4 defaults 0 2` (Paramètre basique et classique)
+6. **Vérification** :
+    - Vérifiez le montage avec `lsblk`.
 
-## Vérification et montage
+---
 
-- On test le montage avec `mount -a` Si tout est correct, aucune erreur ne sera affichée;
+## **Récupération de l'UUID et édition de `fstab`**
 
-- Vérifiez que le disque est monté avec `df -h`
+1. **Récupérer l'UUID du disque** :
+    - Utilisez `blkid` pour récupérer l'UUID du disque.
+    - Exemple de sortie :
+      ```
+      /dev/sdb1: UUID="1234-ABCD" TYPE="ext4"
+      ```
 
-- On redémarre avec `reboot now`;
+2. **Édition de `fstab` pour montage automatique** :
+    - Ouvrez le fichier `/etc/fstab` avec un éditeur de texte :
+      ```
+      nano /etc/fstab
+      ```
+    - Ajoutez la ligne suivante avec l'UUID récupéré :
+      ```
+      UUID=1234-ABCD /mnt/achoisir ext4 defaults 0 2
+      ```
+    - Sauvegardez et fermez le fichier.
 
-- On vérifie avec `lsblk`et on peut également retourné vérfier `fstab`que tout soit OK;
+---
 
-## Ajouter le disque à Proxmox
+## **Vérification et montage**
 
-- Aller dans l'interface web Proxmox :
-    - Allez dans Datacenter > Storage;
-    - Ajouter un nouveau stockage :
-        - Cliquez sur Add > Directory (pour un stockage basé sur un système de fichiers);
-        - Donnez un nom au stockage (Nom du dossier de montage peut être bien);
-        - Renseignez le chemin du montage (par exemple, /mnt/achoisir);
-        - Sélectionnez les types de contenu (par exemple, Disk image, ISO image);
+1. **Tester le montage avec `mount -a`** :
+    - Cette commande monte tous les systèmes de fichiers définis dans `/etc/fstab` sans avoir besoin de redémarrer. Si tout est correct, aucune erreur ne sera affichée.
 
-- Appliquer et vérifier :
+2. **Vérification du montage** :
+    - Vérifiez l'espace disque et les points de montage avec `df -h`.
 
+3. **Redémarrer le serveur** :
+    ```
+    reboot now
+    ```
+
+4. **Vérifier après redémarrage** :
+    - Vérifiez le montage avec `lsblk` et assurez-vous que tout est en ordre en vérifiant à nouveau `/etc/fstab`.
+
+---
+
+## **Ajouter le disque à Proxmox**
+
+1. **Accéder à l'interface web de Proxmox** :
+    - Ouvrir le navigateur et se connecter à l'interface web de Proxmox.
+
+2. **Ajouter un nouveau stockage** :
+    - Aller dans **Datacenter > Storage**.
+    - Cliquez sur **Add > Directory** (pour un stockage basé sur un système de fichiers).
+    - Donnez un nom au stockage (par exemple, le nom du répertoire de montage).
+    - Indiquez le chemin du montage (par exemple, `/mnt/achoisir`).
+    - Sélectionnez les types de contenu que vous souhaitez associer au stockage, tels que **Disk image**, **ISO image**, etc.
+
+3. **Appliquer et vérifier** :
+    - Appliquez les modifications et vérifiez dans l'interface Proxmox que le disque est bien ajouté et disponible pour être utilisé.
+
+---
+
+Avec ce guide, vous pouvez ajouter et configurer un disque sur Proxmox, le formater, le monter, et le rendre accessible pour un stockage local.
