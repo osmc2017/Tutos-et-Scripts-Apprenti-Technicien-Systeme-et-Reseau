@@ -11,10 +11,10 @@ cat /etc/netplan/*.yaml
 
 #### Éditer la configuration Netplan :
 ```bash
-sudo nano /etc/netplan/01-netcfg.yaml
+sudo nano /etc/netplan/01-netcfg.yaml     # a adapter
 ```
 
-#### Exemple de configuration :
+#### Exemple de configuration :           # a adapter
 ```yaml
 network:
   version: 2
