@@ -19,6 +19,7 @@ sudo nano /etc/netplan/01-netcfg.yaml     # a adapter
 network:
   version: 2
   renderer: networkd
+  dhcp4: true/false
   ethernets:
     eth0:
       addresses:
