@@ -14,9 +14,9 @@ cat /etc/netplan/*.yaml
 sudo nano /etc/netplan/01-netcfg.yaml     # a adapter
 ```
 
-#### Exemple de configuration :           # a adapter
+#### Exemple de configuration :           
 ```yaml
-network:
+network:                      # A adapter
   version: 2
   renderer: networkd
   dhcp4: true/false
