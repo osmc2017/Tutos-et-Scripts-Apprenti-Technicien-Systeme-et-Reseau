@@ -48,6 +48,7 @@ Merci de votre visite et bonne exploration ! 🚀
 ### [**Tutoriels :**](TUTO)
 #### [Tuto Réseaux](TUTO/Tuto_Réseaux)
 - [Notion Git](TUTO/Tuto_Réseaux/GIT_NOTION.md)
+- [Modifier des adresses IP en ligne de commande](TUTO/Tuto_Réseaux/modif_ip.md)
 - [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md)
 - [Wireshark](TUTO/Tuto_Réseaux/Wireshark.md)
 - [Setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
