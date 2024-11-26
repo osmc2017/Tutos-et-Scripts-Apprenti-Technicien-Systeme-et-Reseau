@@ -55,7 +55,6 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
 - [Plan d'adressage IP](TUTO/Tuto_Réseaux/Plan_adressage.md)
 - [Installation d'un serveur GLPI](TUTO/Tuto_Réseaux/install_glpi.md)
-- [Container wake-on-lan + streamdeck](TUTO/Tuto_Réseaux/tuto_stream_wakeonlan.md)
 
 #### [Tuto Linux](TUTO/Tuto_Linux)
 - [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
