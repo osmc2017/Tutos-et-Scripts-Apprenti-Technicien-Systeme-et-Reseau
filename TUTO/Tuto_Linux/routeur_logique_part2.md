@@ -45,7 +45,7 @@ iface enp0s10 inet static
 
 ### Règle NAT
 
-#### Routeur edge
+#### Routeur Edge
 
 - On parametre le NAT:
 ```
@@ -62,10 +62,26 @@ allow-hotplug enp0s3
 iface enp0s3 inet dhcp
 pre-up nft -f /root/table_NAT 
 ```
-
-#### routeur interne
+- On redémarre le service avec `systemctl restart networking.service`.
 
 - On vérifie si on a internet en faisant un ping `8.8.8.8`.
 - Tout est bon.
+
+### Accés internet Vlan 1
+
+#### Routeur Edge
+- On edite avec `nano table_NAT.nft
+```
+table ip table_NAT { 
+    chain chain_postrouting {
+        type nat hook postrouting priority filter; policy accept;
+        ip saddr 10.0.99.252/30 oif "enp0s3" snat to 192.168.1.110
+        ip saddr 10.0.0.0/22 oif "enp0s3" snat to 192.168.1.110
+    }
+}
+```
+- On rajoute la route pour que le vlan 1 puise communiquer avec internet `ip route add 10.0.1.0/24 via 10.0.99.253`.
+- Un client du vlan 1 a bien accés à internet.
+ 
 
 # La suite dans la partie 3!
