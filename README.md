@@ -76,3 +76,5 @@ Merci de votre visite et bonne exploration ! 🚀
 
 #### [Tuto Proxmox](TUTO/Tuto_Proxmox)
 - [Création de partition](TUTO/Tuto_Proxmox/créa_partition.md)
+- [Configuration de Proxmox en HTTP](TUTO/Tuto_Proxmox/configuration_HTTP_PROXMOX.md)
+- [Configuration de Proxmox en HTTPS](TUTO/Tuto_Proxmox/configuration_HTTPS_PROXMOX.md)
