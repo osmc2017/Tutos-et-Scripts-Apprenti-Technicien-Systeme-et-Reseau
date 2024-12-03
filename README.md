@@ -65,7 +65,8 @@ Merci de votre visite et bonne exploration ! 🚀
     - [Démo DNS](TUTO/Tuto_Linux/DNS/Demo_DNS_Linux.md)
     - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
     - [Tuto DNS](TUTO/Tuto_Linux/DNS/TUTO_DNS_LINUX_BIS.md)
-- [Routeur logique Débian](TUTO/Tuto_Linux/routeur_logic_part1.md)
+- [Routeur logique Débian partie 1](TUTO/Tuto_Linux/routeur_logique_part1.md)
+- [Routeur logique Débian partie 2](TUTO/Tuto_Linux/routeur_logique_part2.md)
 
 #### [Tuto Windows](TUTO/Tuto_Windows)
 - [Serveur DHCP](TUTO/Tuto_Windows/DHCP_SRV_Windows.md)
