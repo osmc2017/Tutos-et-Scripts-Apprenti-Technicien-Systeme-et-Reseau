@@ -68,4 +68,4 @@ pre-up nft -f /root/table_NAT
 - On vérifie si on a internet en faisant un ping `8.8.8.8`.
 - Tout est bon.
 
-# La suite dans le 3!
+# La suite dans la partie 3!
