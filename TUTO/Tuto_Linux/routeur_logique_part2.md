@@ -80,7 +80,7 @@ table ip table_NAT {
     }
 }
 ```
-- On rajoute la route pour que le vlan 1 puise communiquer avec internet `ip route add 10.0.1.0/24 via 10.0.99.253`.
+- On rajoute la route pour que le Vlan 1 puise communiquer avec internet `ip route add 10.0.1.0/24 via 10.0.99.253`.
 - Un client du vlan 1 a bien accés à internet.
  
 
