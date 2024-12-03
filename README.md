@@ -73,6 +73,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Installation service ADDS](TUTO/Tuto_Windows/Install_SERVICE_AD_DS.md)
 - [Quête GPO](TUTO/Tuto_Windows/QUETE_GPO.md)
 - [Erreur KVM](TUTO/Tuto_Windows/Erreur_KVM.md)
+- [Partage de dossier SMB](TUTO/Tuto_Windows/partage_fichier_SMB.md)
 
 #### [Tuto Proxmox](TUTO/Tuto_Proxmox)
 - [Création de partition](TUTO/Tuto_Proxmox/créa_partition.md)
