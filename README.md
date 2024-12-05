@@ -68,7 +68,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Routeur logique Débian partie 1](TUTO\Tuto_Linux\Routeur_logique\routeur_logique_part1.md)
 - [Routeur logique Débian partie 2](TUTO\Tuto_Linux\Routeur_logique\routeur_logique_part2.md)
 - [Routeur logique Débian partie 3](TUTO\Tuto_Linux\Routeur_logique\routeur_logique_part3.md)
-- [Installation d'un serveur GLPI](TUTO\Tuto_Linux\Instal_GLPI)
+- [Installation d'un serveur GLPI](TUTO\Tuto_Linux\Install_GLPI)
     - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_ubuntu_server.md)
     - [Installation d'un serveur GLPIsur Debian](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_debian.md)
     - [Installation d'un serveur GLPI sur debian via script](TUTO\Tuto_Linux\Instal_GLPI\GLPI_script.md)
