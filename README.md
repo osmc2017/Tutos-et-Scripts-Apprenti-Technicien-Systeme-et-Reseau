@@ -39,6 +39,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Quête Sauvegarde fichier](SCRIPT/BASH/svg_quete_bash.sh)
 - [Création de VM](SCRIPT/BASH/CREA_VM_BASH.sh)
 - [Clone de Vm](SCRIPT/BASH/CLONE_VM_BASH.sh)
+- [Script installation GLPI](SCRIPT/BASH/install_GLPI.sh)
 
 #### [Script Powershell](SCRIPT/POWERSHELL)
 - [Quête création de dossier](SCRIPT/POWERSHELL/CREA_DOSSIER_POWERSHELL.ps1)

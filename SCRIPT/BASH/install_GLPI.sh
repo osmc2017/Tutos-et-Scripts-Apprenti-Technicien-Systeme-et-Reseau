@@ -1,4 +1,4 @@
-# Lien vers le tuto: TUTO\Tuto_Linux\tuto glpi_script.md
+# Lien vers le tuto: TUTO/Tuto_Linux/Install_GLPI/GLPI_script.md
 
 #!/bin/bash
 
