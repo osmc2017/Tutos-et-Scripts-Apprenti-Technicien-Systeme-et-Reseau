@@ -35,7 +35,7 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
 ## Schéma synoptique du lab :
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5bbe9964-2f54-4747-979a-a7e1e963e271">
+  <img src="https://github.com/user-attachments/assets/60085fb4-5909-4df6-b249-5de829a67aed">
 </p>
 
 ## Outils du lab :
@@ -78,7 +78,8 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
 	`net.ipv4.ip_forward=1` et `net.ipv6.conf.all.forwarding=1`
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/60085fb4-5909-4df6-b249-5de829a67aed">
+  <img src="https://github.com/user-attachments/assets/a19121ab-486d-4c12-b6ba-22597cedcc89">
+
 
 </p>
 
@@ -97,21 +98,24 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
    - Sauvegarder cette table pour le NAT :  
      	`nft list table ip table_NAT > table_NAT.nft`
 <p align="center">
- 		<img src="https://github.com/user-attachments/assets/e79556b0-d306-49f3-9c3a-28cd66f75bcc">
+ 		<img src="https://github.com/user-attachments/assets/d60f3a15-70ac-4ffd-ac02-4d43ef456ad3">
+
 </p>
 
 **4 - Configuration des interfaces réseaux sur R-EDGE et activation de la règle NAT au démarrage :**
 
 - Dans le fichier `nano /etc/network/interfaces` de R-EDGE, chargement de la règle NAT et configuration de la 2ème carte réseau :
 <p align="center">
- 		<img src="https://github.com/user-attachments/assets/f2ad6496-2bf2-43a9-b848-3ae4e4ddcb97">
+ 		<img src="https://github.com/user-attachments/assets/ec5208f4-97f9-4e99-b164-a349cc96e5e1">
+	
 </p>
 
 **5 - Configuration des interfaces réseaux sur R-INTER :**
 
 - Dans le fichier `nano /etc/network/interfaces` de R-INTER, configuration des cartes réseaux :
 	<p align="center">
- 		<img src="https://github.com/user-attachments/assets/f19d8fd0-39de-407f-9277-5d4159c9cf2b">
+ 		<img src="https://github.com/user-attachments/assets/0897932e-d24c-4f0c-8498-6758067f0ecc">
+
 	</p>
 
  `To be continued...`
