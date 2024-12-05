@@ -115,7 +115,31 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
 - Dans le fichier `nano /etc/network/interfaces` de R-INTER, configuration des cartes réseaux :
 	<p align="center">
  		<img src="https://github.com/user-attachments/assets/0897932e-d24c-4f0c-8498-6758067f0ecc">
-
 	</p>
 
+ **6 - Implémentation et configuration du protocole RIP avec FRRouting dans R-INTER :**  
+- Installation de l'outil FRRouting avec la commande : `apt install frr`
+- Dans le fichier `/etc/frr/daemons` activer le protocole RIP : `ripd=yes`
+- Dans le fichier `/etc/frr/frr.conf` configurer le protocole RIP puis redémarrer le service frr.service avec la commande : `systemctl restart frr.service` :
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a50717cf-c24a-4ac7-b2ce-1ed87bd4063b">
+
+</p>
+ 
+ **7 - Implémentation et configuration du protocole RIP avec FRRouting dans R-EDGE :**  
+- Installation de l'outil FRRouting avec la commande : `apt install frr`
+- Dans le fichier `/etc/frr/daemons` activer le protocole RIP : `ripd=yes`
+- Dans le fichier `/etc/frr/frr.conf` configurer le protocole RIP puis redémarrer le service frr.service avec la commande : `systemctl restart frr.service` :
+<p align="center">
+<img src="https://github.com/user-attachments/assets/7d298f21-83d0-4c16-9068-528f06fcb192">
+
+</p>
+
+ **8 - Vérification du partage des routes de R-INTER à R-EDGE**
+
+ - Vérication directe depuis R-EDGE : `ip route`
+ - Vérification depuis le shell de configuration de FRRouting : `show ip rip` ou en dehors du shell `vtysh -c "show ip rip"`
+ - Vérification depuis le shell de configuration de FRRouting des routers voisins : `show ip neigh` ou en dehors du shell `vtysh -c "show ip neigh"`
+
  `To be continued...`
+
