@@ -27,7 +27,7 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
 - [x] Configuration des interfaces réseaux sur R-EDGE
 - [x] Configuration des interfaces réseaux sur R-INTER
 - [x] Configuration des routes sur R-EDGE
-- [ ] Installation et configuration du protocole RIP
+- [x] Installation et configuration du protocole RIP
 - [ ] Installation et configuration d'un serveur DHCP (R-INTER)
 - [ ] Installation et configuration de radvd (R-INTER)
 - [ ] Configuration IPv6
