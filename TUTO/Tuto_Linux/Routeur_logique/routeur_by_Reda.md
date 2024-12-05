@@ -78,7 +78,8 @@ Mise en place d'une infrastructure système et réseau composée des éléments 
 	`net.ipv4.ip_forward=1` et `net.ipv6.conf.all.forwarding=1`
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a0cb14f9-0cca-496f-b3d5-2e4edb0abbbc">
+  <img src="https://github.com/user-attachments/assets/60085fb4-5909-4df6-b249-5de829a67aed">
+
 </p>
 
 - Quitter le fichier en sauvegardant : `Ctrl+x` puis `y`
