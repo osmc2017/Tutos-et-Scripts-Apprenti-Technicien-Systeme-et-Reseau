@@ -4,9 +4,7 @@ Ce tutoriel décrit les étapes nécessaires pour installer et configurer **GLPI
 
 Le script est [ici](SCRIPT\BASH\install_GLPI.sh).
 
-Le script est structuré en plusieurs sections :
-
----
+Vous pouvez le télécharger via la commande `wget https://raw.githubusercontent.com/osmc2017/Tutos-et-Scripts-Apprenti-Technicien-Systeme-et-Reseau/refs/heads/main/SCRIPT/BASH/install_GLPI.sh`
 
 ## Étape 1 : Mise à jour des paquets et installation du socle LAMP
 
