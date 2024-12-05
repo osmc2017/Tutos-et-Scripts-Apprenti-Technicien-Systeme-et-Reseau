@@ -88,7 +88,7 @@ Maintenant, testez avec un `ping` et utilisez Wireshark pour observer que le ser
 - Ajoutez la ligne suivante pour charger la table NAT après l'activation des cartes réseau :
 
 ```
-# Commandeq ui charge la table_NFT aprés l'activation des cartes réseaux
+# Commande qui charge la table_NFT aprés l'activation des cartes réseaux
 pre-up nft -f /root/myrules.nft #mauvaise pratique de mettre dans root
 ```
 
@@ -96,7 +96,6 @@ pre-up nft -f /root/myrules.nft #mauvaise pratique de mettre dans root
 - Maintenant, la configuration de NAT ne devrait plus être perdue après un redémarrage. Testez avec :  
 `systemctl restart networking.service`
 
-# La suite au prochain épisode.
 
 
 

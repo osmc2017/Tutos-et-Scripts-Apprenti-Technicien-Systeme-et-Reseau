@@ -66,6 +66,7 @@ Merci de votre visite et bonne exploration ! 🚀
     - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
     - [Tuto DNS](TUTO/Tuto_Linux/DNS/TUTO_DNS_LINUX_BIS.md)
 - [Routeur logique Débian](TUTO/Tuto_Linux/routeur_logic_part1.md)
+- [Routeur logique Débian](TUTO\Tuto_Linux\routeur_logique_part2.md)
 - [Installation d'un serveur GLPI](TUTO\Tuto_Linux\Instal_GLPI)
     - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_ubuntu_server.md)
     - [Installation d'un serveur GLPIsur Debian](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_debian.md)
@@ -78,6 +79,9 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Installation service ADDS](TUTO/Tuto_Windows/Install_SERVICE_AD_DS.md)
 - [Quête GPO](TUTO/Tuto_Windows/QUETE_GPO.md)
 - [Erreur KVM](TUTO/Tuto_Windows/Erreur_KVM.md)
+- [Partage de dossier SMB](TUTO/Tuto_Windows/partage_fichier_SMB.md)
 
 #### [Tuto Proxmox](TUTO/Tuto_Proxmox)
 - [Création de partition](TUTO/Tuto_Proxmox/créa_partition.md)
+- [Configuration de Proxmox en HTTP](TUTO/Tuto_Proxmox/configuration_HTTP_PROXMOX.md)
+- [Configuration de Proxmox en HTTPS](TUTO/Tuto_Proxmox/configuration_HTTPS_PROXMOX.md)
