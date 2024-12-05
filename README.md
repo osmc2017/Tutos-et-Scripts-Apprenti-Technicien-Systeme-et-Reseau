@@ -54,7 +54,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
 - [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
 - [Plan d'adressage IP](TUTO/Tuto_Réseaux/Plan_adressage.md)
-- [Installation d'un serveur GLPI](TUTO/Tuto_Réseaux/install_glpi.md)
+
 
 #### [Tuto Linux](TUTO/Tuto_Linux)
 - [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
@@ -66,6 +66,11 @@ Merci de votre visite et bonne exploration ! 🚀
     - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
     - [Tuto DNS](TUTO/Tuto_Linux/DNS/TUTO_DNS_LINUX_BIS.md)
 - [Routeur logique Débian](TUTO/Tuto_Linux/routeur_logic_part1.md)
+- [Installation d'un serveur GLPI](TUTO\Tuto_Linux\Instal_GLPI)
+    - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_ubuntu_server.md)
+    - [Installation d'un serveur GLPIsur Debian](TUTO\Tuto_Linux\Instal_GLPI\install_glpi_debian.md)
+    - [Installation d'un serveur GLPI sur debian via script](TUTO\Tuto_Linux\Instal_GLPI\GLPI_script.md)
+
 
 #### [Tuto Windows](TUTO/Tuto_Windows)
 - [Serveur DHCP](TUTO/Tuto_Windows/DHCP_SRV_Windows.md)
