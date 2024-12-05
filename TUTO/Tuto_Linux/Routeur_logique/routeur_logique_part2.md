@@ -67,7 +67,7 @@ pre-up nft -f /root/table_NAT
 - On vérifie si on a internet en faisant un ping `8.8.8.8`.
 - Tout est bon.
 
-### Accés internet Vlan 1
+### Accés internet Vlan 1 => ne pas faire !!!
 
 #### Routeur Edge
 - On edite avec `nano table_NAT.nft
@@ -82,6 +82,6 @@ table ip table_NAT {
 ```
 - On rajoute la route pour que le Vlan 1 puise communiquer avec internet `ip route add 10.0.1.0/24 via 10.0.99.253`.
 - Un client du vlan 1 a bien accés à internet.
- 
+ => modifier la fin
 
-# La suite dans la partie 3!
+# La suite dans la partie 3: Installation et configuration du protocole RIP
