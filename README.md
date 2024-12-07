@@ -32,22 +32,42 @@ Merci de votre visite et bonne exploration ! 🚀
 
 ## Sommaire
 
-### [**Scripts :**](SCRIPT)
-#### [Script Bash](SCRIPT/BASH)
+### [Scripts](SCRIPT/)
+
+<details>
+<summary><b>Script Bash</b></summary>
+
 - [Atelier argument](SCRIPT/BASH/Atelier_Argument.sh)
 - [Quête création de dossier](SCRIPT/BASH/quete_crea_dossier.sh)
 - [Quête Sauvegarde fichier](SCRIPT/BASH/svg_quete_bash.sh)
 - [Création de VM](SCRIPT/BASH/CREA_VM_BASH.sh)
-- [Clone de Vm](SCRIPT/BASH/CLONE_VM_BASH.sh)
+- [Clone de VM](SCRIPT/BASH/CLONE_VM_BASH.sh)
 - [Script installation GLPI](SCRIPT/BASH/install_GLPI.sh)
 
-#### [Script Powershell](SCRIPT/POWERSHELL)
+</details>
+
+<details>
+<summary>   <b>Script PowerShell</b></summary>
+
+- [AD](SCRIPT/POWERSHELL/AD)
+  - [Installation AD DS core à un domaine existant](SCRIPT/POWERSHELL/AD/ADD_ADCORE_TODom.ps1)
+  - [Clône d'OU existant](SCRIPT/POWERSHELL/AD/CLONE_OU.ps1)
+  - [Création d'OU à partir d'un fichier](SCRIPT/POWERSHELL/AD/Create_OU.ps1)
+  - [Création d'Utilisateurs à partir d'un fichier](SCRIPT/POWERSHELL/AD/create_Users.ps1)
 - [Quête création de dossier](SCRIPT/POWERSHELL/CREA_DOSSIER_POWERSHELL.ps1)
 - [Création de VM](SCRIPT/POWERSHELL/CREA_VM_POWERSHELL.ps1)
 - [Clone de VM](SCRIPT/POWERSHELL/CLONE_VM_POWERSHELL.ps1)
 
-### [**Tutoriels :**](TUTO)
-#### [Tuto Réseaux](TUTO/Tuto_Réseaux)
+</details>
+
+</details>
+
+
+### [Tutoriels](TUTO/)
+
+<details>
+<summary><b>Tuto Réseaux</b></summary>
+
 - [Notion Git](TUTO/Tuto_Réseaux/GIT_NOTION.md)
 - [Modifier des adresses IP en ligne de commande](TUTO/Tuto_Réseaux/modif_ip.md)
 - [SSH sans MDP](TUTO/Tuto_Réseaux/SSH_SANS_MDP.md)
@@ -56,31 +76,37 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
 - [Plan d'adressage IP](TUTO/Tuto_Réseaux/Plan_adressage.md)
 
+</details>
 
-#### [Tuto Linux](TUTO/Tuto_Linux)
+<details>
+<summary><b>Tuto Linux</b></summary>
+
 - [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
 - [Création de groupe (démo)](TUTO/Tuto_Linux/DEMO_creation_group.md)
 - [Exercice "machine à café"](TUTO/Tuto_Linux/EXO_CAFE.md)
 - [DHCP](TUTO/Tuto_Linux/DHCP_Linux.md)
 - [DNS :](TUTO/Tuto_Linux/DNS)
-    - [Démo DNS](TUTO/Tuto_Linux/DNS/Demo_DNS_Linux.md)
-    - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
-    - [Tuto DNS](TUTO/Tuto_Linux/DNS/TUTO_DNS_LINUX_BIS.md)
+  - [Démo DNS](TUTO/Tuto_Linux/DNS/Demo_DNS_Linux.md)
+  - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
+  - [Tuto DNS](TUTO/Tuto_Linux/DNS/TUTO_DNS_LINUX_BIS.md)
 - [Routeur logique](TUTO/Tuto_Linux/Routeur_logique/)
-    - [Routeur logique Débian partie 1](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part1.md)
-    - [Routeur logique Débian partie 2](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part2.md)
-    - [Routeur logique Débian partie 3](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part3.md)
-    - [Routeur logique Débian partie 4](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part4.md)
-    - [Routeur logique Débian partie 5](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part5.md)
-    - [Routeur logique Débian partie 6](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part6.md)
-    - [Routeur logique Débian tuto Reda](TUTO/Tuto_Linux/Routeur_logique/routeur_by_Reda.md)
+  - [Routeur logique Débian partie 1](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part1.md)
+  - [Routeur logique Débian partie 2](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part2.md)
+  - [Routeur logique Débian partie 3](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part3.md)
+  - [Routeur logique Débian partie 4](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part4.md)
+  - [Routeur logique Débian partie 5](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part5.md)
+  - [Routeur logique Débian partie 6](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part6.md)
+  - [Routeur logique Débian tuto Reda](TUTO/Tuto_Linux/Routeur_logique/routeur_by_Reda.md)
 - [Installation d'un serveur GLPI](TUTO/Tuto_Linux/Install_GLPI)
-    - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO/Tuto_Linux/Install_GLPI/install_glpi_ubuntu_server.md)
-    - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
-    - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
+  - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO/Tuto_Linux/Install_GLPI/install_glpi_ubuntu_server.md)
+  - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
+  - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
 
+</details>
 
-#### [Tuto Windows](TUTO/Tuto_Windows)
+<details>
+<summary><b>Tuto Windows</b></summary>
+
 - [Serveur DHCP](TUTO/Tuto_Windows/DHCP_SRV_Windows.md)
 - [Serveur DNS](TUTO/Tuto_Windows/DNS_SRV_Windows.md)
 - [Installation service ADDS](TUTO/Tuto_Windows/Install_SERVICE_AD_DS.md)
@@ -88,7 +114,15 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Erreur KVM](TUTO/Tuto_Windows/Erreur_KVM.md)
 - [Partage de dossier SMB](TUTO/Tuto_Windows/partage_fichier_SMB.md)
 
-#### [Tuto Proxmox](TUTO/Tuto_Proxmox)
+</details>
+
+<details>
+<summary><b>Tuto Proxmox</b></summary>
+
 - [Création de partition](TUTO/Tuto_Proxmox/créa_partition.md)
 - [Configuration de Proxmox en HTTP](TUTO/Tuto_Proxmox/configuration_HTTP_PROXMOX.md)
 - [Configuration de Proxmox en HTTPS](TUTO/Tuto_Proxmox/configuration_HTTPS_PROXMOX.md)
+
+</details>
+
+</details>
