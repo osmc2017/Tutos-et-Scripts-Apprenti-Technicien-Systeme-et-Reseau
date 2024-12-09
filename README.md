@@ -113,6 +113,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Quête GPO](TUTO/Tuto_Windows/QUETE_GPO.md)
 - [Erreur KVM](TUTO/Tuto_Windows/Erreur_KVM.md)
 - [Partage de dossier SMB](TUTO/Tuto_Windows/partage_fichier_SMB.md)
+- [Ajout VBoxManage au "PATH](TUTO/Tuto_Windows/Add_Path_VBoxManage.md)
 
 </details>
 
