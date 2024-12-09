@@ -30,7 +30,9 @@ qm importdisk 100 GNS3_VM-disk2.vmdk local-lvm -format qcow2
 ```
 
 - Aprés l'exportation retournez sur la Vm créé au début et ajouter les nouveaux disques 
-(img)
+![ajout disques](https://github.com/user-attachments/assets/50d1f9a0-90c5-4ff8-ad40-0d70f001afdb)
+
+
 
 - Il faut maintenant choisir l'ordre de 'boot'
 
