@@ -101,6 +101,7 @@ Merci de votre visite et bonne exploration ! 🚀
   - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO/Tuto_Linux/Install_GLPI/install_glpi_ubuntu_server.md)
   - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
   - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
+  - [Projet Security Onion groupe 1](TUTO/Tuto_Linux/Security_Onion(G1Wild)/README.md)
 
 </details>
 
@@ -125,6 +126,12 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Configuration de Proxmox en HTTPS](TUTO/Tuto_Proxmox/configuration_HTTPS_PROXMOX.md)
 - [Création d'une VM GNS3 sur Proxmox](TUTO/Tuto_Proxmox/GNS3_PROXMOX.md)
 
+</details>
+
+<details>
+<summary><b>Notions</b></summary>
+
+- [Les Raid(s)](TUTO/Notions/Raid.md)
 </details>
 
 </details>
