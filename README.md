@@ -116,7 +116,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Partage de dossier SMB](TUTO/Tuto_Windows/partage_fichier_SMB.md)
 - [Ajout VBoxManage au "PATH](TUTO/Tuto_Windows/Add_Path_VBoxManage.md)
 - [Création AD sécurisé (Core) avec HelloMyDir](TUTO/Tuto_Windows/AD_HelloMyDir_Core.md)
-- - [Création AD sécurisé (GUI) avec HelloMyDir](TUTO/Tuto_Windows/AD_HelloMyDir_GUI.md)
+- [Création AD sécurisé (GUI) avec HelloMyDir](TUTO/Tuto_Windows/AD_HelloMyDir_GUI.md)
 
 </details>
 

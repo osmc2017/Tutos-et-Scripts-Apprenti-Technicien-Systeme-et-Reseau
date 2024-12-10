@@ -9,7 +9,7 @@ Ce tutoriel explique comment configurer un nouveau domaine Active Directory (AD)
 
 Avant de commencer :
 1. **Nommer la machine** : Accédez à *Paramètres système > Informations système* et définissez un nom pour le serveur.
-2. **Configurer un IPv4 statique** : Via *Centre Réseau et partage > Modifier les paramètres de la carte*, configurez une adresse IP fixe.
+2. **Configurer un IPv4 statique** : Via *Centre Réseau et partage > Modifier les paramètres de la carte*, configurez une adresse IP fixe (aprés avoir récupéré le zip).
 3. **Installer les mises à jour Windows** : Utilisez *Paramètres > Windows Update* pour effectuer les mises à jour.
 4. **Compte Administrateur** : Utilisez un compte Administrateur local.
 
@@ -34,12 +34,21 @@ Avant de commencer :
    - Ouvrez PowerShell en tant qu'administrateur (*Cliquez droit > Exécuter en tant qu’administrateur*).
    - Naviguez dans le répertoire de l'outil :
      ```powershell
-     cd C:\Scripts\HelloMyDir\Hello-My-Dir-1.1.2\
+     cd C:\Scripts\HelloMyDir\      #Cherchez le chemin jusqu'au script en amont
      ```
+   - Donnez temporairement les droits d'éxécution au script avec:
+   ```
+   Get-ExecutionPolicy
+   Set-ExecutionPolicy RemoteSigned
+   Set-ExecutionPolicy Unrestricted
+   Get-ChildItem "C:\Scripts\HelloMyDir" -Recurse | Unblock-File
+   ```
+
    - Lancez le script :
      ```powershell
      .\Invoke-HelloMyDir.ps1
      ```
+   
 
 2. **Répondez aux questions** :
    - **Créer un nouveau domaine dans une nouvelle forêt ?** Répondez "Y".
