@@ -75,6 +75,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Setup routeur Cisco](TUTO/Tuto_Réseaux/setup_router_cisco.md)
 - [Conversion Binaire et Héxa](TUTO/Tuto_Réseaux/conversion_binaire_hexa.md)
 - [Plan d'adressage IP](TUTO/Tuto_Réseaux/Plan_adressage.md)
+- [Ports TCP et UDP](TUTO/Tuto_Réseaux/port_TCP-UDP.md)
 
 </details>
 
@@ -102,6 +103,7 @@ Merci de votre visite et bonne exploration ! 🚀
   - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
   - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
 - [Projet Security Onion groupe 1](TUTO/Tuto_Linux/Security_Onion(G1Wild)/README.md)
+- [Configuration OpenVPN basique sur Ubuntu](TUTO/Tuto_Linux/VPN_Guide.md)
 
 </details>
 
@@ -127,6 +129,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Configuration de Proxmox en HTTP](TUTO/Tuto_Proxmox/configuration_HTTP_PROXMOX.md)
 - [Configuration de Proxmox en HTTPS](TUTO/Tuto_Proxmox/configuration_HTTPS_PROXMOX.md)
 - [Création d'une VM GNS3 sur Proxmox](TUTO/Tuto_Proxmox/GNS3_PROXMOX.md)
+- [Configurations des Vlans dans PfSense sur Proxmox](TUTO/Tuto_Proxmox/Config_Vlans_PfSense.md)
 
 </details>
 
