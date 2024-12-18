@@ -162,8 +162,9 @@ Par défaut, PostgreSQL utilise l'authentification `peer`, ce qui peut provoquer
 1. Démarrez et activez les services Bareos :
 
     ```bash
-    systemctl start bareos-director bareos-storage bareos-filedaemon
-    systemctl enable bareos-director bareos-storage bareos-filedaemon
+    systemctl enable --now bareos-director
+    systemctl enable --now bareos-storage
+    systemctl enable --now bareos-filedaemon
     ```
 
 2. Vérifiez l’état des services :
