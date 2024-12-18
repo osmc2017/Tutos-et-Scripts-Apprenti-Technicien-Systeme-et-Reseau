@@ -134,6 +134,15 @@ Merci de votre visite et bonne exploration ! 🚀
 </details>
 
 <details>
+<summary><b>Tuto Bareos</b></summary>
+
+- [Installation Bareos server sur Débian](TUTO/Tuto_Bareos/Bareos_server_debian.md)
+- [Installation et configuration Bareos server Webui](TUTO/Tuto_Bareos/Bareos_server_webui.md)
+- [Configuration d'un client Linux (ubuntu à tester)](TUTO/Tuto_Bareos/Client_linux.md)
+
+</details>
+
+<details>
 <summary><b>Notions</b></summary>
 
 - [Les Raid(s)](TUTO/Notions/Raid.md)
