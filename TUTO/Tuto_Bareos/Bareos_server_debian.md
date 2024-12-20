@@ -47,7 +47,7 @@ Installation de GPG (gnupg):
 
 ```bash
 apt install gnupg -y
-```reboot
+```
 
 ### 2.2. Ajouter le Dépôt Bareos et Définir les Permissions
 
