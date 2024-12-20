@@ -139,6 +139,7 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Installation Bareos server sur Débian](TUTO/Tuto_Bareos/Bareos_server_debian.md)
 - [Installation et configuration Bareos server Webui](TUTO/Tuto_Bareos/Bareos_server_webui.md)
 - [Configuration d'un client Linux (ubuntu à tester)](TUTO/Tuto_Bareos/Client_linux.md)
+- [Configuration d'un client Windows](TUTO/Tuto_Bareos/Client_Windows.md)
 
 </details>
 
