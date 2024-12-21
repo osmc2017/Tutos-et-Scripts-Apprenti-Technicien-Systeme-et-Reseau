@@ -345,7 +345,3 @@ status dir
 ---
 
 Pour plus de détails, référez-vous à la [documentation officielle Bareos](https://www.bareos.org/documentation.html).
-
----
-
-MAJ à venir.
