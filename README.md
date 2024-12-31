@@ -10,6 +10,7 @@ L'objectif de ce dépôt est de centraliser tout le contenu lié à mon apprenti
 
 Voici un aperçu de ce que vous trouverez dans ce dépôt :
 
+- **Projets** : Réalisations personnelles et issues de formations, mettant en avant diverses compétences techniques.
 - **Scripts** : Automatisation de tâches courantes pour la gestion des systèmes et des réseaux.
 - **Tutoriels** : Guides pratiques sur des sujets techniques, comme la configuration de serveurs, la gestion des réseaux, l'utilisation de VirtualBox, etc.
 - **Ressources** : Fichiers de configuration, exemples de code, et autres documents utiles pour un technicien en réseau et système.
@@ -31,6 +32,25 @@ Si vous avez des questions ou des suggestions, vous pouvez me contacter via les 
 Merci de votre visite et bonne exploration ! 🚀
 
 ## Sommaire
+
+### [Projet]()
+
+<details>
+<summary><b>Projets formations</b></summary>
+
+- [Nmap](https://github.com/osmc2017/projet-scanner-de-ports)
+- [Scripting](https://github.com/osmc2017/scriptingproject)
+- [Infrastructures pour une entreprise fictive](https://github.com/WildCodeSchool/TSSR-2409-VERT-P3-G4-build-your-infra)
+
+</details>
+
+<details>
+<summary><b>Projets Personnels</b></summary>
+
+- [Infrastructures pour l'entreprise Bartinfo](https://github.com/osmc2017/infra-bartinfo)
+- [Mise en place d'un raspberry pour la sécurité du réseau personnel]()
+
+</details>
 
 ### [Scripts](SCRIPT/)
 
