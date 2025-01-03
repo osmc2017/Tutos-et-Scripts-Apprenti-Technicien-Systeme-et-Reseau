@@ -122,6 +122,10 @@ Merci de votre visite et bonne exploration ! 🚀
   - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO/Tuto_Linux/Install_GLPI/install_glpi_ubuntu_server.md)
   - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
   - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
+- [Squid](TUTO/Tuto_Linux/Squid/)
+  - [Squid HTTP](TUTO/Tuto_Linux/Squid/squid-HTTP.md)
+  - [Squid HTTPS explicite](TUTO/Tuto_Linux/Squid/squid-https-explicite.md)
+- [Pi-Hole installation et configuration](TUTO/Tuto_Linux/pi-hole.md)
 - [Projet Security Onion groupe 1](TUTO/Tuto_Linux/Security_Onion(G1Wild)/README.md)
 - [Configuration OpenVPN basique sur Ubuntu](TUTO/Tuto_Linux/VPN_Guide.md)
 
