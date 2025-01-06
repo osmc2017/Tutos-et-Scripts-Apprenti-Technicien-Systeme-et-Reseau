@@ -226,4 +226,4 @@ systemctl start NetworkManager
 
 En cas de problème, faites-le moi savoir pour un dépannage supplémentaire. 😊
 
-[voir le README](README.md)
+[voir le README](Tutos-et-Scripts-Apprenti-Technicien-Systeme-et-Reseau/README.md)
