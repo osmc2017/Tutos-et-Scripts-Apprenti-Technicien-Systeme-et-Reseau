@@ -71,14 +71,14 @@ Voici une méthode détaillée pour configurer deux disques en RAID 1 sur Debian
 2. **Montez le RAID :**
    Créez un point de montage et montez le RAID :
    ```bash
-   mkdir /mnt/raid1
-   mount /dev/md0 /mnt/raid1
+   mkdir /mnt/backup
+   mount /dev/md0 /mnt/backup
    ```
 
 3. **Ajoutez l'entrée dans `/etc/fstab` :**
    Pour monter automatiquement le RAID au démarrage, ajoutez cette ligne au fichier `/etc/fstab` :
    ```plaintext
-   /dev/md0    /mnt/raid1    ext4    defaults    0    0
+   /dev/md0    /mnt/backup   ext4    defaults    0    0
    ```
 
 ### Étape 5 : Sauvegarder la Configuration du RAID
@@ -185,6 +185,26 @@ Bareos utilise **PostgreSQL** pour sa base de données. Voici comment installer 
    - Outils CLI.
    - Configuration pour PostgreSQL.
 
+2. **Définissez un mot de passe pour l'utilisateur `bareos` (si nécessaire) :**
+   Si vous avez cliqué sur **Non** lors de l'installation de Bareos pour configurer automatiquement la base de données, définissez manuellement un mot de passe pour `bareos` :
+   ```bash
+   su - postgres -c "psql -c \"ALTER USER bareos WITH PASSWORD 'Pascal01*';\""
+   ```
+
+### 2.4. Configurer les Scripts de Base de Données
+
+1. **Donnez les permissions nécessaires aux scripts :**
+   ```bash
+   chmod +x /usr/lib/bareos/scripts/*
+   ```
+
+2. **Exécutez les scripts avec l’utilisateur `postgres` :**
+   ```bash
+   su - postgres -c "/usr/lib/bareos/scripts/create_bareos_database"
+   su - postgres -c "/usr/lib/bareos/scripts/make_bareos_tables"
+   su - postgres -c "/usr/lib/bareos/scripts/grant_bareos_privileges"
+   ```
+
 ### 2.4. Configurer l'authentification PostgreSQL pour Bareos
 
 1. **Modifiez le fichier de configuration `pg_hba.conf` :**
@@ -205,38 +225,17 @@ Bareos utilise **PostgreSQL** pour sa base de données. Voici comment installer 
    ```bash
    systemctl restart postgresql
    ```
+---
 
-4. **Définissez un mot de passe pour l'utilisateur `bareos` (si nécessaire) :**
-   Si vous avez cliqué sur **Non** lors de l'installation de Bareos pour configurer automatiquement la base de données, définissez manuellement un mot de passe pour `bareos` :
-   ```bash
-   su - postgres -c "psql -c \"ALTER USER bareos WITH PASSWORD 'Azerty1*';\""
-   ```
-
-### 2.5. Configurer les Scripts de Base de Données
-
-1. **Donnez les permissions nécessaires aux scripts :**
-   ```bash
-   chmod +x /usr/lib/bareos/scripts/*
-   ```
-
-2. **Exécutez les scripts avec l’utilisateur `postgres` :**
-   ```bash
-   su - postgres -c "/usr/lib/bareos/scripts/create_bareos_database"
-   su - postgres -c "/usr/lib/bareos/scripts/make_bareos_tables"
-   su - postgres -c "/usr/lib/bareos/scripts/grant_bareos_privileges"
-   ```
-
-3. **Vérifiez la base de données :**
+4. **Vérifiez la base de données :**
    ```bash
    psql -U bareos -d bareos -c '\dt'
    ```
 
-4. **Testez la connexion avec l'utilisateur `bareos` :**
+5. **Testez la connexion avec l'utilisateur `bareos` :**
    ```bash
    psql -U bareos -d bareos -W
    ```
-
----
 
 ## Configuration et Démarrage de Bareos
 

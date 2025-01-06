@@ -48,7 +48,7 @@ Vous avez deux méthodes pour configurer un utilisateur Bareos pour la WebUI :
 
 2. Créez un utilisateur nommé `admin` avec un mot de passe :
     ```plaintext
-    *configure add console name=admin password=Azerty1* profile=webui-admin tlsenable=false
+    *configure add console name=admin password=Pascal01 profile=webui-admin tlsenable=false
     *reload
     ```
     > Remplacez `Azerty1*` par un mot de passe sécurisé de votre choix.

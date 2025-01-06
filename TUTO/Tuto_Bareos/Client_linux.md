@@ -60,13 +60,12 @@ apt install bareos-filedaemon
    systemctl restart bareos-fd
    ```
 
-### Étape 5 : Vérifier le fonctionnement
-Depuis le serveur Bareos, vérifiez que le client est joignable :
+4. Récupérer le nom du client (et le modfier si vous le souhaitez):
+ ```bash
+   nano /etc/bareos/bareos-fd.d/client/myself.conf
+   ```
 
-```bash
-bconsole
-*status client=nom_du_client-fd
-```
+5. Redémarrer le client
 
 ---
 
@@ -180,7 +179,7 @@ sudo apt update && sudo apt install -y gnupg
 Téléchargez et exécutez le script pour ajouter les dépôts Bareos :
 
 ```bash
-wget https://download.bareos.com/bareos/release/latest/Ubuntu_$(lsb_release -sc)/add_bareos_repo.sh
+wget https://download.bareos.org/current/xUbuntu_22.04/add_bareos_repositories.sh
 chmod +x add_bareos_repo.sh
 sudo ./add_bareos_repo.sh
 ```
@@ -193,6 +192,12 @@ sudo apt update && sudo apt install bareos-filedaemon
 ```
 
 ### Étape 4 : Configurer le client
+
+* Donner les droit avec
+```bash
+sudo chmod -R 755 /etc/bareos/bareos-fd.d
+```
+
 1. Modifiez le fichier de configuration du démon de fichier :
    ```bash
    sudo nano /etc/bareos/bareos-fd.d/director/bareos-dir.conf
@@ -215,44 +220,7 @@ sudo apt update && sudo apt install bareos-filedaemon
    sudo systemctl restart bareos-fd
    ```
 
-### Étape 5 : Vérifier le fonctionnement
-Depuis le serveur Bareos, vérifiez que le client est joignable :
+### Étape 5 : Se reporter aux Etapes de Debian pour le serveur
 
-```bash
-bconsole
-*status client=nom_du_client-fd
-```
-
----
-
-## 5. Résolution des problèmes
-
-### Vérifier le statut du service
-- Debian :
-  ```bash
-  systemctl status bareos-fd
-  ```
-- Ubuntu :
-  ```bash
-  sudo systemctl status bareos-fd
-  ```
-
-### Tester la connexion
-Vérifiez si le port 9102 est ouvert :
-```bash
-netstat -tuln | grep 9102
-```
-
-### Lancer le démon en mode debug
-- Debian :
-  ```bash
-  /usr/sbin/bareos-fd -f -d 100
-  ```
-- Ubuntu :
-  ```bash
-  sudo /usr/sbin/bareos-fd -f -d 100
-  ```
-
----
 
 Une fois ces étapes terminées, votre client Bareos devrait être correctement configuré et opérationnel.
