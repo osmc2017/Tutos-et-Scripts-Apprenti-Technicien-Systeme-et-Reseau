@@ -28,7 +28,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
        Random Access = Yes
        AutomaticMount = yes
        RemovableMedia = no
-       AlwaysOpen = YES
+       AlwaysOpen = yes
    }
    ```
 
@@ -140,13 +140,13 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
    Pool {
        Name = Full
        Pool Type = Backup
-       Recycle = yes                       # Bareos can automatically recycle Volumes
-       AutoPrune = yes                     # Prune expired volumes
-       Volume Retention = 365 days         # How long should the Full Backups be kept?
-       Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
-       Maximum Volumes = 100               # Limit number of Volumes in Pool
-       Label Format = "Full-"              # Volumes will be labeled "Full-<volume-id>"
-       Storage = RAID1-Storage             # Use the RAID1-Storage device
+       Recycle = yes                       # Bareos peut recycler automatiquement les Volumes
+       AutoPrune = yes                     # Prune les volumes expirés
+       Volume Retention = 365 days         # Durée de rétention des sauvegardes complètes
+       Maximum Volume Bytes = 50G          # Limite la taille des volumes
+       Maximum Volumes = 100               # Limite le nombre de volumes dans le pool
+       Label Format = "Full-"              # Les volumes seront nommés "Full-<volume-id>"
+       Storage = RAID1-Storage             # Utilise le périphérique RAID1-Storage
    }
    ```
 
@@ -184,72 +184,11 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
    - **Volume Name** : Donnez un nom à votre volume (exemple : `test-backup`).
    - **Pool** : Sélectionnez le pool associé (exemple : `Full`).
 
-   Exemple de sortie :
-   ```plaintext
-   Automatically selected Catalog: MyCatalog
-   Using Catalog "MyCatalog"
-   The defined Storage resources are:
-   1: File
-   2: RAID1-Storage
-   Select Storage resource (1-2): 2
-   Enter new Volume name: test-backup
-   Defined Pools:
-   1: Scratch
-   2: Incremental
-   3: Full
-   4: Differential
-   Select the Pool (1-4): 3
-   Connecting to Storage daemon RAID1-Storage at 127.0.0.1:9103 ...
-   Sending label command for Volume "test-backup" Slot 0 ...
-   Volume successfully created.
-   ```
-
 4. Si une erreur survient, vérifiez les permissions ou le montage du répertoire de stockage.
 
 ---
 
-## 6. Vérification dans `bconsole`
+### **Conclusion**
 
-1. Connectez-vous à `bconsole` :
-   ```bash
-   bconsole
-   ```
-
-2. Vérifiez que le Storage est bien reconnu :
-   ```bash
-   *show storage
-   ```
-
-3. Vérifiez le statut du Storage Daemon :
-   ```bash
-   *status storage=RAID1-Storage
-   ```
-
-4. Testez une sauvegarde en utilisant le Pool configuré (par exemple, `Full`) :
-   ```bash
-   *run job=BackupClient1 pool=Full
-   ```
-
----
-
-## 7. Vérification finale
-
-1. Consultez les Jobs terminés :
-   ```bash
-   *list jobs
-   ```
-
-2. Vérifiez les fichiers sauvegardés :
-   ```bash
-   *list files jobid=JOB_ID
-   ```
-
-3. Vérifiez physiquement sur le RAID 1 que les volumes sont créés :
-   ```bash
-   ls -l /mnt/raid1
-   ```
-
----
-
-Avec ces étapes, votre RAID 1 est correctement configuré et utilisé comme périphérique de stockage dans Bareos.
+Avec ce tutoriel, vous avez configuré votre RAID 1 comme périphérique de stockage dans Bareos. Cela comprend la déclaration du périphérique dans le Storage Daemon, la configuration du Bareos Director pour utiliser ce stockage, et l’association à un Pool. Vous pouvez maintenant l’utiliser pour vos sauvegardes. Si vous rencontrez des problèmes, consultez les journaux ou demandez de l’aide.
 

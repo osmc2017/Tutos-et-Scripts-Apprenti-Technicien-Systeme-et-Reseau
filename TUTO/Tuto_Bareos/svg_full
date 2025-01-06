@@ -1,34 +1,56 @@
 ### Tutoriel : Configurer une Sauvegarde Complète (Full) avec Bareos
 
-Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complète (Full) dans Bareos en utilisant exclusivement `bconsole`. Une sauvegarde complète copie tous les fichiers spécifiés dans le **FileSet**, qu'ils aient changé ou non.
+Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complète (Full) dans Bareos en utilisant les fichiers de configuration pour créer un nouveau pool et l'intégrer dans une stratégie de sauvegarde. Une sauvegarde complète copie tous les fichiers spécifiés dans le FileSet, qu'ils aient changé ou non.
 
 ---
 
 ## **1. Créer un Pool pour les sauvegardes complètes**
 
-### 1.1 Accéder à `bconsole`
-1. Ouvrez `bconsole` :
+### 1.1 Accéder au répertoire de configuration
+1. Ouvrez un terminal et accédez au répertoire des configurations des pools de Bareos Director :
+   ```bash
+   cd /etc/bareos/bareos-dir.d/pool/
+   ```
+
+### 1.2 Créer un fichier de configuration pour le Pool
+2. Créez un fichier nommé `Full.conf` :
+   ```bash
+   nano Full.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Pool {
+       Name = Full
+       Pool Type = Backup
+       Recycle = yes
+       AutoPrune = yes
+       Volume Retention = 90 days
+       Maximum Volume Bytes = 100G
+       Maximum Volumes = 10
+       Label Format = "Full-"
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur :
+   - Appuyez sur `Ctrl + O`, puis `Entrée`.
+   - Appuyez sur `Ctrl + X`.
+
+### 1.3 Tester et recharger la configuration
+5. Vérifiez que la configuration est correcte :
+   ```bash
+   bareos-dir -t
+   ```
+   - **Résultat attendu** : Aucun message d'erreur.
+
+6. Redémarrez le service Bareos Director :
+   ```bash
+   systemctl restart bareos-dir
+   ```
+
+7. Vérifiez que le Pool est bien créé :
    ```bash
    bconsole
-   ```
-
-### 1.2 Créer un Pool
-2. Utilisez la commande `create pool` :
-   ```bash
-   *create pool
-   ```
-
-3. Remplissez les informations demandées :
-   - **Nom du Pool** : `Full`
-   - **Pool Type** : `Backup`
-   - **Recycle** : `yes`
-   - **AutoPrune** : `yes`
-   - **Volume Retention** : `90 days`
-   - **Maximum Volume Bytes** : `100G`
-   - **Label Format** : `Full-`
-
-4. Vérifiez le Pool créé :
-   ```bash
    *list pools
    ```
 
@@ -36,8 +58,9 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complèt
 
 ## **2. Créer un Volume dans le Pool**
 
-1. Utilisez la commande `label` pour créer un volume :
+1. Utilisez la commande `label` dans `bconsole` pour créer un volume :
    ```bash
+   bconsole
    *label
    ```
 
@@ -55,17 +78,35 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complèt
 
 ## **3. Créer un horaire hebdomadaire**
 
-1. Utilisez la commande `create schedule` :
+1. Accédez au répertoire des configurations des horaires :
    ```bash
-   *create schedule
+   cd /etc/bareos/bareos-dir.d/schedule/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du Schedule** : `WeeklyFull`
-   - **Run Statement** : `Full weekly on Saturday at 02:00`
-
-3. Vérifiez le Schedule créé :
+2. Créez un fichier nommé `WeeklyFull.conf` :
    ```bash
+   nano WeeklyFull.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Schedule {
+       Name = WeeklyFull
+       Run = Full on Saturday at 02:00
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
+   ```
+
+6. Vérifiez le Schedule créé dans `bconsole` :
+   ```bash
+   bconsole
    *show schedules
    ```
 
@@ -75,77 +116,92 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complèt
 
 Un FileSet permet de définir les fichiers ou répertoires à sauvegarder. Pour un client Windows :
 
-1. Utilisez la commande `create fileset` :
+1. Accédez au répertoire des configurations des FileSets :
    ```bash
-   *create fileset
+   cd /etc/bareos/bareos-dir.d/fileset/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du FileSet** : `WindowsFullFileSet`
-   - **Include** : Indiquez les répertoires ou disques à sauvegarder. Par exemple :
-     ```plaintext
-     "C:/Users"  
-     "D:/Data"
-     ```
-   - **Exclude** (optionnel) : Spécifiez les fichiers ou répertoires à exclure. Par exemple :
-     ```plaintext
-     "C:/Users/TemporaryFiles"
-     ```
-
-3. Vérifiez le FileSet créé :
+2. Créez un fichier nommé `WindowsFullFileSet.conf` :
    ```bash
-   *show filesets
+   nano WindowsFullFileSet.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   FileSet {
+       Name = WindowsFullFileSet
+       Enable VSS = Yes
+       Include {
+           Options {
+               compression = GZIP
+           }
+           File = "C:/Users"
+           File = "D:/Data"
+       }
+       Exclude {
+           File = "C:/Users/TemporaryFiles"
+       }
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
    ```
 
 ---
 
 ## **5. Créer un Job de sauvegarde complète**
 
-1. Utilisez la commande `create job` :
+1. Accédez au répertoire des configurations des Jobs :
    ```bash
-   *create job
+   cd /etc/bareos/bareos-dir.d/job/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du Job** : `FullBackup`
-   - **Job Type** : `Backup`
-   - **Level** : `Full`
-   - **Client** : Indiquez le nom du client Windows (par exemple, `WindowsClient-fd`).
-   - **FileSet** : `WindowsFullFileSet`
-   - **Schedule** : `WeeklyFull`
-   - **Storage** : Sélectionnez le stockage configuré (par exemple, `RAID1-Storage`).
-   - **Pool** : `Full`
-   - **Messages** : `Standard`
-
-3. Vérifiez le Job créé :
+2. Créez un fichier nommé `FullBackup.conf` :
    ```bash
+   nano FullBackup.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Job {
+       Name = FullBackup
+       Type = Backup
+       Level = Full
+       Client = WindowsClient-fd
+       FileSet = WindowsFullFileSet
+       Schedule = WeeklyFull
+       Storage = RAID1-Storage
+       Pool = Full
+       Messages = Standard
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
+   ```
+
+6. Vérifiez le Job créé dans `bconsole` :
+   ```bash
+   bconsole
    *show jobs
    ```
 
 ---
 
-## **6. Créer un Volume supplémentaire si nécessaire**
-
-Si votre Pool nécessite plusieurs Volumes pour gérer les sauvegardes :
-
-1. Utilisez à nouveau la commande `label` pour ajouter un Volume :
-   ```bash
-   *label
-   ```
-
-2. Suivez les invites pour ajouter un nouveau Volume (exemple : `Full-002`).
-
-3. Vérifiez que le Volume est ajouté au Pool :
-   ```bash
-   *list volumes pool=Full
-   ```
-
----
-
-## **7. Lancer un test manuel**
+## **6. Lancer un test manuel**
 
 1. Lancez une sauvegarde complète pour tester la configuration :
    ```bash
+   bconsole
    *run job=FullBackup
    ```
 
@@ -161,10 +217,11 @@ Si votre Pool nécessite plusieurs Volumes pour gérer les sauvegardes :
 
 ---
 
-## **8. Vérifications finales**
+## **7. Vérifications finales**
 
 1. Consultez les Jobs planifiés pour vérifier que la sauvegarde complète sera automatisée :
    ```bash
+   bconsole
    *list jobs
    ```
 
@@ -189,5 +246,5 @@ Cette configuration garantit une sauvegarde complète régulière de vos donnée
 journalctl -u bareos-dir
 ```
 
-Vous pouvez désormais compter sur une solution fiable pour sauvegarder intégralement vos données chaque semaine. 
+Vous pouvez désormais compter sur une solution fiable pour sauvegarder intégralement vos données chaque semaine. 😊
 

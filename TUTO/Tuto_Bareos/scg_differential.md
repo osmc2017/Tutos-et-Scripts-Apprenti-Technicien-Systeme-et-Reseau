@@ -1,34 +1,56 @@
 ### Tutoriel : Configurer une Sauvegarde Différentielle (Differential) avec Bareos
 
-Ce tutoriel vous guide étape par étape pour configurer une sauvegarde différentielle (Differential) dans Bareos en utilisant exclusivement `bconsole`. Une sauvegarde différentielle copie uniquement les fichiers modifiés depuis la dernière sauvegarde complète (Full).
+Ce tutoriel vous guide étape par étape pour configurer une sauvegarde différentielle (Differential) dans Bareos en utilisant les fichiers de configuration pour créer un nouveau pool et l'intégrer dans une stratégie de sauvegarde. Une sauvegarde différentielle copie uniquement les fichiers modifiés depuis la dernière sauvegarde complète (Full).
 
 ---
 
 ## **1. Créer un Pool pour les sauvegardes différentielles**
 
-### 1.1 Accéder à `bconsole`
-1. Ouvrez `bconsole` :
+### 1.1 Accéder au répertoire de configuration
+1. Ouvrez un terminal et accédez au répertoire des configurations des pools de Bareos Director :
+   ```bash
+   cd /etc/bareos/bareos-dir.d/pool/
+   ```
+
+### 1.2 Créer un fichier de configuration pour le Pool
+2. Créez un fichier nommé `Differential.conf` :
+   ```bash
+   nano Differential.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Pool {
+       Name = Differential
+       Pool Type = Backup
+       Recycle = yes
+       AutoPrune = yes
+       Volume Retention = 60 days
+       Maximum Volume Bytes = 50G
+       Maximum Volumes = 20
+       Label Format = "Differential-"
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur :
+   - Appuyez sur `Ctrl + O`, puis `Entrée`.
+   - Appuyez sur `Ctrl + X`.
+
+### 1.3 Tester et recharger la configuration
+5. Vérifiez que la configuration est correcte :
+   ```bash
+   bareos-dir -t
+   ```
+   - **Résultat attendu** : Aucun message d'erreur.
+
+6. Redémarrez le service Bareos Director :
+   ```bash
+   systemctl restart bareos-dir
+   ```
+
+7. Vérifiez que le Pool est bien créé :
    ```bash
    bconsole
-   ```
-
-### 1.2 Créer un Pool
-2. Utilisez la commande `create pool` :
-   ```bash
-   *create pool
-   ```
-
-3. Remplissez les informations demandées :
-   - **Nom du Pool** : `Differential`
-   - **Pool Type** : `Backup`
-   - **Recycle** : `yes`
-   - **AutoPrune** : `yes`
-   - **Volume Retention** : `60 days`
-   - **Maximum Volume Bytes** : `50G`
-   - **Label Format** : `Differential-`
-
-4. Vérifiez le Pool créé :
-   ```bash
    *list pools
    ```
 
@@ -36,8 +58,9 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde différe
 
 ## **2. Créer un Volume dans le Pool**
 
-1. Utilisez la commande `label` pour créer un volume :
+1. Utilisez la commande `label` dans `bconsole` pour créer un volume :
    ```bash
+   bconsole
    *label
    ```
 
@@ -55,17 +78,35 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde différe
 
 ## **3. Créer un horaire intermédiaire**
 
-1. Utilisez la commande `create schedule` :
+1. Accédez au répertoire des configurations des horaires :
    ```bash
-   *create schedule
+   cd /etc/bareos/bareos-dir.d/schedule/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du Schedule** : `MidWeekDifferential`
-   - **Run Statement** : `Differential on Tuesday, Thursday at 02:00`
-
-3. Vérifiez le Schedule créé :
+2. Créez un fichier nommé `MidWeekDifferential.conf` :
    ```bash
+   nano MidWeekDifferential.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Schedule {
+       Name = MidWeekDifferential
+       Run = Differential on Tuesday, Thursday at 02:00
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
+   ```
+
+6. Vérifiez le Schedule créé dans `bconsole` :
+   ```bash
+   bconsole
    *show schedules
    ```
 
@@ -75,77 +116,92 @@ Ce tutoriel vous guide étape par étape pour configurer une sauvegarde différe
 
 Un FileSet permet de définir les fichiers ou répertoires à sauvegarder. Pour un client Windows :
 
-1. Utilisez la commande `create fileset` :
+1. Accédez au répertoire des configurations des FileSets :
    ```bash
-   *create fileset
+   cd /etc/bareos/bareos-dir.d/fileset/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du FileSet** : `WindowsDifferentialFileSet`
-   - **Include** : Indiquez les répertoires ou disques à sauvegarder. Par exemple :
-     ```plaintext
-     "C:/Users"  
-     "D:/Data"
-     ```
-   - **Exclude** (optionnel) : Spécifiez les fichiers ou répertoires à exclure. Par exemple :
-     ```plaintext
-     "C:/Users/TemporaryFiles"
-     ```
-
-3. Vérifiez le FileSet créé :
+2. Créez un fichier nommé `WindowsDifferentialFileSet.conf` :
    ```bash
-   *show filesets
+   nano WindowsDifferentialFileSet.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   FileSet {
+       Name = WindowsDifferentialFileSet
+       Enable VSS = Yes
+       Include {
+           Options {
+               compression = GZIP
+           }
+           File = "C:/Users"
+           File = "D:/Data"
+       }
+       Exclude {
+           File = "C:/Users/TemporaryFiles"
+       }
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
    ```
 
 ---
 
 ## **5. Créer un Job de sauvegarde différentielle**
 
-1. Utilisez la commande `create job` :
+1. Accédez au répertoire des configurations des Jobs :
    ```bash
-   *create job
+   cd /etc/bareos/bareos-dir.d/job/
    ```
 
-2. Remplissez les informations demandées :
-   - **Nom du Job** : `DifferentialBackup`
-   - **Job Type** : `Backup`
-   - **Level** : `Differential`
-   - **Client** : Indiquez le nom du client Windows (par exemple, `WindowsClient-fd`).
-   - **FileSet** : `WindowsDifferentialFileSet`
-   - **Schedule** : `MidWeekDifferential`
-   - **Storage** : Sélectionnez le stockage configuré (par exemple, `RAID1-Storage`).
-   - **Pool** : `Differential`
-   - **Messages** : `Standard`
-
-3. Vérifiez le Job créé :
+2. Créez un fichier nommé `DifferentialBackup.conf` :
    ```bash
+   nano DifferentialBackup.conf
+   ```
+
+3. Ajoutez la configuration suivante :
+   ```plaintext
+   Job {
+       Name = DifferentialBackup
+       Type = Backup
+       Level = Differential
+       Client = WindowsClient-fd
+       FileSet = WindowsDifferentialFileSet
+       Schedule = MidWeekDifferential
+       Storage = RAID1-Storage
+       Pool = Differential
+       Messages = Standard
+   }
+   ```
+
+4. Sauvegardez et quittez l'éditeur.
+
+5. Testez et rechargez la configuration :
+   ```bash
+   bareos-dir -t
+   systemctl restart bareos-dir
+   ```
+
+6. Vérifiez le Job créé dans `bconsole` :
+   ```bash
+   bconsole
    *show jobs
    ```
 
 ---
 
-## **6. Créer un Volume supplémentaire si nécessaire**
-
-Si votre Pool nécessite plusieurs Volumes pour gérer les sauvegardes :
-
-1. Utilisez à nouveau la commande `label` pour ajouter un Volume :
-   ```bash
-   *label
-   ```
-
-2. Suivez les invites pour ajouter un nouveau Volume (exemple : `Differential-002`).
-
-3. Vérifiez que le Volume est ajouté au Pool :
-   ```bash
-   *list volumes pool=Differential
-   ```
-
----
-
-## **7. Lancer un test manuel**
+## **6. Lancer un test manuel**
 
 1. Lancez une sauvegarde différentielle pour tester la configuration :
    ```bash
+   bconsole
    *run job=DifferentialBackup
    ```
 
@@ -161,10 +217,11 @@ Si votre Pool nécessite plusieurs Volumes pour gérer les sauvegardes :
 
 ---
 
-## **8. Vérifications finales**
+## **7. Vérifications finales**
 
 1. Consultez les Jobs planifiés pour vérifier que la sauvegarde différentielle sera automatisée :
    ```bash
+   bconsole
    *list jobs
    ```
 
@@ -189,5 +246,5 @@ Cette configuration garantit des sauvegardes différentielles régulières pour 
 journalctl -u bareos-dir
 ```
 
-Vous pouvez désormais compter sur une solution fiable pour sauvegarder les modifications intermédiaires entre deux sauvegardes complètes.
+Vous pouvez désormais compter sur une solution fiable pour sauvegarder les modifications intermédiaires entre deux sauvegardes complètes. 😊
 
