@@ -8,7 +8,7 @@ Ce guide adapte la documentation officielle de **Bareos WebUI** pour Debian et U
 
 1. Installez le méta-paquet `bareos-webui` :
     ```bash
-    apt-get install bareos-webui -y
+    apt install bareos-webui -y
     ```
 
 2. Activez le support PHP-FPM pour Apache :
@@ -48,10 +48,10 @@ Vous avez deux méthodes pour configurer un utilisateur Bareos pour la WebUI :
 
 2. Créez un utilisateur nommé `admin` avec un mot de passe :
     ```plaintext
-    *configure add console name=admin password=secret profile=webui-admin tlsenable=false
+    *configure add console name=admin password=Azerty1* profile=webui-admin tlsenable=false
     *reload
     ```
-    > Remplacez `secret` par un mot de passe sécurisé de votre choix.
+    > Remplacez `Azerty1*` par un mot de passe sécurisé de votre choix.
 
 3. Quittez `bconsole` :
     ```plaintext
@@ -85,6 +85,13 @@ Vous avez deux méthodes pour configurer un utilisateur Bareos pour la WebUI :
     ```plaintext
     *exit
     ```
+
+4. Redémarrez Bareos Director pour appliquer les modifications :
+    ```bash
+    systemctl restart bareos-director
+    ```
+
+---
 
 #### **Méthode 2 : Activer un fichier de configuration existant**
 

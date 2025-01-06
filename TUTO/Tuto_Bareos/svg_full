@@ -1,0 +1,193 @@
+### Tutoriel : Configurer une Sauvegarde Complète (Full) avec Bareos
+
+Ce tutoriel vous guide étape par étape pour configurer une sauvegarde complète (Full) dans Bareos en utilisant exclusivement `bconsole`. Une sauvegarde complète copie tous les fichiers spécifiés dans le **FileSet**, qu'ils aient changé ou non.
+
+---
+
+## **1. Créer un Pool pour les sauvegardes complètes**
+
+### 1.1 Accéder à `bconsole`
+1. Ouvrez `bconsole` :
+   ```bash
+   bconsole
+   ```
+
+### 1.2 Créer un Pool
+2. Utilisez la commande `create pool` :
+   ```bash
+   *create pool
+   ```
+
+3. Remplissez les informations demandées :
+   - **Nom du Pool** : `Full`
+   - **Pool Type** : `Backup`
+   - **Recycle** : `yes`
+   - **AutoPrune** : `yes`
+   - **Volume Retention** : `90 days`
+   - **Maximum Volume Bytes** : `100G`
+   - **Label Format** : `Full-`
+
+4. Vérifiez le Pool créé :
+   ```bash
+   *list pools
+   ```
+
+---
+
+## **2. Créer un Volume dans le Pool**
+
+1. Utilisez la commande `label` pour créer un volume :
+   ```bash
+   *label
+   ```
+
+2. Suivez les invites :
+   - **Storage resource** : Sélectionnez le stockage configuré (par exemple, `RAID1-Storage`).
+   - **Volume Name** : Donnez un nom au volume (exemple : `Full-001`).
+   - **Pool** : Sélectionnez le pool `Full`.
+
+3. Vérifiez que le volume est bien créé dans le Pool :
+   ```bash
+   *list volumes pool=Full
+   ```
+
+---
+
+## **3. Créer un horaire hebdomadaire**
+
+1. Utilisez la commande `create schedule` :
+   ```bash
+   *create schedule
+   ```
+
+2. Remplissez les informations demandées :
+   - **Nom du Schedule** : `WeeklyFull`
+   - **Run Statement** : `Full weekly on Saturday at 02:00`
+
+3. Vérifiez le Schedule créé :
+   ```bash
+   *show schedules
+   ```
+
+---
+
+## **4. Créer un FileSet pour définir les données à sauvegarder**
+
+Un FileSet permet de définir les fichiers ou répertoires à sauvegarder. Pour un client Windows :
+
+1. Utilisez la commande `create fileset` :
+   ```bash
+   *create fileset
+   ```
+
+2. Remplissez les informations demandées :
+   - **Nom du FileSet** : `WindowsFullFileSet`
+   - **Include** : Indiquez les répertoires ou disques à sauvegarder. Par exemple :
+     ```plaintext
+     "C:/Users"  
+     "D:/Data"
+     ```
+   - **Exclude** (optionnel) : Spécifiez les fichiers ou répertoires à exclure. Par exemple :
+     ```plaintext
+     "C:/Users/TemporaryFiles"
+     ```
+
+3. Vérifiez le FileSet créé :
+   ```bash
+   *show filesets
+   ```
+
+---
+
+## **5. Créer un Job de sauvegarde complète**
+
+1. Utilisez la commande `create job` :
+   ```bash
+   *create job
+   ```
+
+2. Remplissez les informations demandées :
+   - **Nom du Job** : `FullBackup`
+   - **Job Type** : `Backup`
+   - **Level** : `Full`
+   - **Client** : Indiquez le nom du client Windows (par exemple, `WindowsClient-fd`).
+   - **FileSet** : `WindowsFullFileSet`
+   - **Schedule** : `WeeklyFull`
+   - **Storage** : Sélectionnez le stockage configuré (par exemple, `RAID1-Storage`).
+   - **Pool** : `Full`
+   - **Messages** : `Standard`
+
+3. Vérifiez le Job créé :
+   ```bash
+   *show jobs
+   ```
+
+---
+
+## **6. Créer un Volume supplémentaire si nécessaire**
+
+Si votre Pool nécessite plusieurs Volumes pour gérer les sauvegardes :
+
+1. Utilisez à nouveau la commande `label` pour ajouter un Volume :
+   ```bash
+   *label
+   ```
+
+2. Suivez les invites pour ajouter un nouveau Volume (exemple : `Full-002`).
+
+3. Vérifiez que le Volume est ajouté au Pool :
+   ```bash
+   *list volumes pool=Full
+   ```
+
+---
+
+## **7. Lancer un test manuel**
+
+1. Lancez une sauvegarde complète pour tester la configuration :
+   ```bash
+   *run job=FullBackup
+   ```
+
+2. Suivez l'exécution du Job :
+   ```bash
+   *status dir
+   ```
+
+3. Une fois terminé, listez les fichiers sauvegardés :
+   ```bash
+   *list files jobid=JOB_ID
+   ```
+
+---
+
+## **8. Vérifications finales**
+
+1. Consultez les Jobs planifiés pour vérifier que la sauvegarde complète sera automatisée :
+   ```bash
+   *list jobs
+   ```
+
+2. Vérifiez physiquement sur le stockage que les volumes sont bien créés :
+   ```bash
+   ls -l /mnt/raid1
+   ```
+
+---
+
+## **Conclusion**
+
+En suivant ce tutoriel, vous avez configuré une sauvegarde complète hebdomadaire sur un client Windows à l'aide de Bareos. Voici le résultat final :
+
+1. **Les données sauvegardées** : Tous les fichiers et dossiers spécifiés dans le FileSet (par exemple, `C:/Users` et `D:/Data`).
+2. **Automatisation** : La sauvegarde complète s'exécute automatiquement chaque samedi à 02:00, grâce au Schedule `WeeklyFull`.
+3. **Gestion des volumes** : Les sauvegardes sont enregistrées dans le Pool `Full`, utilisant des Volumes créés dans le stockage défini (par exemple, `RAID1-Storage`).
+4. **Test réussi** : Vous avez testé et confirmé que la sauvegarde fonctionne correctement en exécutant un Job manuel.
+
+Cette configuration garantit une sauvegarde complète régulière de vos données critiques. Si des problèmes surviennent, utilisez les journaux pour diagnostiquer :
+```bash
+journalctl -u bareos-dir
+```
+
+Vous pouvez désormais compter sur une solution fiable pour sauvegarder intégralement vos données chaque semaine. 
+

@@ -8,7 +8,7 @@ Ce guide détaille les étapes pour installer et configurer un client Bareos sur
 - Accès à un système Windows avec droits administratifs.
 - Le fichier d'installation du client Bareos téléchargé depuis le site officiel :
   [https://download.bareos.org/](https://download.bareos.org/).
-
+- avoir renommé le pc ??
 ---
 
 ## Étape 1 : Lancer l'installation
@@ -44,7 +44,7 @@ Ces paramètres permettent au Bareos Director (le serveur) de se connecter au cl
 
 - **Password** :
   - Le mot de passe utilisé par le Bareos Director pour s'authentifier auprès de ce client.
-  - Ce mot de passe est également défini dans le fichier `bareos-dir.conf`, dans la section `Client` :
+  - Ce mot de passe sera également défini dans le fichier `bareos-dir.conf`, dans la section `Client` :
     ```plaintext
     Client {
         Name = "nom_du_client-fd"
@@ -107,7 +107,7 @@ Ces paramètres permettent au client de se connecter au Bareos Director via `bco
 
 3. **Ajoutez une ressource de Job pour le client** :
    ```bash
-   *configure add job name=Backup-nom_du_client client=nom_du_client-fd fileset="Full Set" schedule=WeeklyCycle jobdefs=DefaultJob
+   *configure add job name=Backup-nom_du_client client=nom_du_client-fd schedule=WeeklyCycle jobdefs=DefaultJob
    ```
    - **name** : Nom unique du Job, par exemple `Backup-nom_du_client`.
    - **client** : Le nom du client configuré, par exemple `nom_du_client-fd`.
