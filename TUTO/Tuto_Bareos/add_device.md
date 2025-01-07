@@ -15,7 +15,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 
 2. Si le répertoire n'existe pas ou n'est pas monté, montez-le manuellement :
    ```bash
-   sudo mount /dev/mdX /mnt/raid1
+   mount /dev/mdX /mnt/raid1
    ```
    - Remplacez `/dev/mdX` par le nom de votre volume RAID 1.
 
@@ -34,7 +34,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 ### 2.2 Créer un fichier de configuration pour le RAID 1
 2. Créez un fichier nommé `RAID1Storage.conf` :
    ```bash
-   sudo nano RAID1Storage.conf
+   nano RAID1Storage.conf
    ```
 
 3. Ajoutez la configuration suivante :
@@ -64,7 +64,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 
 6. Redémarrez le service Bareos Storage Daemon :
    ```bash
-   sudo systemctl restart bareos-sd
+   systemctl restart bareos-sd
    ```
 
 ---
@@ -80,7 +80,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 ### 3.2 Modifier ou créer un fichier de stockage pour les pools existants
 2. Ouvrez ou créez un fichier nommé `RAID1-Storage.conf` :
    ```bash
-   sudo nano RAID1-Storage.conf
+   nano RAID1-Storage.conf
    ```
 
 3. Ajoutez la configuration suivante pour chaque pool existant :
@@ -124,7 +124,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 
 6. Redémarrez le Bareos Director :
    ```bash
-   sudo systemctl restart bareos-dir
+systemctl restart bareos-dir
    ```
 
 ---
@@ -140,7 +140,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 ### 4.2 Modifier les fichiers de Pools existants
 2. Ouvrez les fichiers des Pools existants (par exemple, `Full.conf`, `Incremental.conf`, `Differential.conf`) et associez-les au stockage configuré :
    ```bash
-   sudo nano Full.conf
+   nano Full.conf
    ```
 
 3. Modifiez ou ajoutez la ligne suivante pour associer le pool au stockage RAID 1 :
@@ -175,7 +175,7 @@ Ce tutoriel vous guide étape par étape pour configurer un RAID 1 comme périph
 
 6. Redémarrez le service :
    ```bash
-   sudo systemctl restart bareos-dir
+   systemctl restart bareos-dir
    ```
 
 ---
