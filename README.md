@@ -158,15 +158,24 @@ Merci de votre visite et bonne exploration ! 🚀
 </details>
 
 <details>
-<summary><b>Tuto Bareos</b></summary>
+<summary><b>Tuto Rsync</b></summary>
 
-- [Installation Bareos server sur Débian](TUTO/Tuto_Bareos/Bareos_server_debian.md)
-- [Installation et configuration Bareos server Webui](TUTO/Tuto_Bareos/Bareos_server_webui.md)
-- [Configuration d'un client Linux (ubuntu à tester)](TUTO/Tuto_Bareos/Client_linux.md)
-- [Configuration d'un client Windows](TUTO/Tuto_Bareos/Client_Windows.md)
-- [Commandes basiques Bareos `bconsole`](TUTO/Tuto_Bareos/commande_basique.md)
+- [Notice](TUTO/Tuto_Rsync/notice.md)
+- [Préparation disque Raid1 et LVM](TUTO/Tuto_Rsync/raid1_lvm.md)
+- [Configuration sauvegarde credentielle](TUTO/Tuto_Rsync/config_credential.md)
+- [Configuration sauvegarde complète)](TUTO/Tuto_Rsync/config_full.md)
+- [Configuration sauvegarde differentielle](TUTO/Tuto_Rsync/config_differential.md)
+- [Commandes basiques Rsync](TUTO/Tuto_Rsync/command_ref.md)
 
 </details>
+
+<details>
+<summary><b>Tuto Raspberry</b></summary>
+
+- [Changer adresse IP](TUTO/Tuto_Raspberry/change_IP.md)
+
+</details>
+
 
 <details>
 <summary><b>Notions</b></summary>
