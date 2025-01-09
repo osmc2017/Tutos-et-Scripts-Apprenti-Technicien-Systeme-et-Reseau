@@ -22,7 +22,7 @@ apt install curl lsb-release ca-certificates gnupg2 pwgen -y
 
 ---
 
-### II. Installation de Java (OpeenJDK17)
+### II. Installation de Java (OpenJDK17)
 
 1. **Installez OpenJDK 17** :
 
@@ -179,7 +179,7 @@ Pour générer le hash du mot de passe admin :
 ```bash
 echo -n "VotreMotDePasse" | shasum -a 256
 ```
-341124fa0200aa936f241fd515fffa792718ec8a8deba082ff5ace14f30164b6 
+
 Copiez le hash obtenu dans `root_password_sha2` et compléter:
 
 ```bash
