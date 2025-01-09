@@ -128,6 +128,8 @@ Merci de votre visite et bonne exploration ! 🚀
 - [Pi-Hole installation et configuration](TUTO/Tuto_Linux/pi-hole.md)
 - [Projet Security Onion groupe 1](TUTO/Tuto_Linux/Security_Onion(G1Wild)/README.md)
 - [Configuration OpenVPN basique sur Ubuntu](TUTO/Tuto_Linux/VPN_Guide.md)
+- [Graylog](TUTO/Tuto_Linux/Graylog/)
+  - [Installation](TUTO/Tuto_Linux/Graylog/installation_graylog.md)
 
 </details>
 

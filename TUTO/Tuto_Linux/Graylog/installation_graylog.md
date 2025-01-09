@@ -2,21 +2,46 @@
 
 ### I. Préparatifs
 
-Avant de commencer, mettez à jour la liste des paquets et installez les outils essentiels :
+
+
+**Prérequis machine** :
+* Mémoire: prévoir suffisament de ram (8go environ)
+* Prévoir surffisament de stockage (50go ernviron pour notre configuration)
+* Prévoir suffisament de core pour le procésseur (2 pour nous)
+* Pour Mongod, si vous travailler sur VM modifier le processuer en suivant cette procédure:
+    - Clique sur "Edit" ou "Modifier" pour ajuster les paramètres du processeur.
+    - Dans la section "CPU Model", sélectionne host comme modèle de CPU. Ce paramètre permet à la VM d'utiliser exactement le même modèle de processeur que celui de l'hôte physique,
+      ce qui donne accès aux instructions avancées du processeur (comme AVX).
+
+**Avant de commencer, mettez à jour la liste des paquets et installez les outils essentiels** :
 
 ```bash
-apt-get update
-apt-get install curl lsb-release ca-certificates gnupg2 pwgen
+apt update
+apt install curl lsb-release ca-certificates gnupg2 pwgen -y
 ```
 
 ---
 
-### II. Installation de MongoDB
+### II. Installation de Java (OpeenJDK17)
+
+1. **Installez OpenJDK 17** :
+
+```bash
+apt install openjdk-17-jre-headless -y
+```
+
+2. **Vérifiez que Java est installé correctement** :
+
+```bash
+java -version
+```
+
+### III. Installation de MongoDB
 
 1. **Ajouter la clé GPG du dépôt MongoDB** :
 
 ```bash
-curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc | gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc |  gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
 ```
 
 2. **Ajouter le dépôt MongoDB** :
@@ -32,8 +57,8 @@ Mettez à jour la liste des paquets et installez MongoDB :
 ```bash
 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.23_amd64.deb
 dpkg -i libssl1.1_1.1.1f-1ubuntu2.23_amd64.deb
-apt-get update
-apt-get install -y mongodb-org
+apt update
+apt install -y mongodb-org
 ```
 
 4. **Activer et démarrer MongoDB** :
@@ -43,6 +68,7 @@ systemctl daemon-reload
 systemctl enable mongod.service
 systemctl start mongod.service
 systemctl --type=service --state=active | grep mongod
+systemctl status mongod.service
 ```
 
 MongoDB est maintenant installé et fonctionnel.
@@ -66,8 +92,8 @@ echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://arti
 3. **Installer Elasticsearch** :
 
 ```bash
-apt-get update
-apt-get install -y elasticsearch
+apt update
+apt install -y elasticsearch
 ```
 
 4. **Configurer Elasticsearch** :
@@ -117,14 +143,14 @@ systemctl start elasticsearch
 
 ```bash
 wget https://packages.graylog2.org/repo/packages/graylog-6.1-repository_latest.deb
-apt-get install -y ./graylog-6.1-repository_latest.deb
-apt-get update
+apt install ./graylog-6.1-repository_latest.deb
+apt update
 ```
 
 2. **Installer Graylog** :
 
 ```bash
-apt-get install -y graylog-server
+apt install -y graylog-server
 ```
 
 3. **Configurer Graylog** :
@@ -145,9 +171,7 @@ Configurez les options suivantes :
 
 ```properties
 password_secret = VOTRE_CLÉ_GÉNÉRÉE
-root_password_sha2 = HASH_SHA256_DE_VOTRE_MOT_DE_PASSE
-http_bind_address = 0.0.0.0:9000
-elasticsearch_hosts = http://127.0.0.1:9200
+
 ```
 
 Pour générer le hash du mot de passe admin :
@@ -155,8 +179,20 @@ Pour générer le hash du mot de passe admin :
 ```bash
 echo -n "VotreMotDePasse" | shasum -a 256
 ```
+341124fa0200aa936f241fd515fffa792718ec8a8deba082ff5ace14f30164b6 
+Copiez le hash obtenu dans `root_password_sha2` et compléter:
 
-Copiez le hash obtenu dans `root_password_sha2`.
+```bash
+nano /etc/graylog/server/server.conf
+```
+
+Configurez les options suivantes :
+
+```properties
+root_password_sha2 = HASH_SHA256_DE_VOTRE_MOT_DE_PASSE
+http_bind_address = 0.0.0.0:9000
+elasticsearch_hosts = http://127.0.0.1:9200
+```
 
 4. **Démarrer Graylog** :
 
