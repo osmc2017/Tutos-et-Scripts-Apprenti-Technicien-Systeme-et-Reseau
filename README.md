@@ -102,10 +102,6 @@ Merci de votre visite et bonne exploration ! 🚀
 <details>
 <summary><b>Tuto Linux</b></summary>
 
-- [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
-- [Création de groupe (démo)](TUTO/Tuto_Linux/DEMO_creation_group.md)
-- [Exercice "machine à café"](TUTO/Tuto_Linux/EXO_CAFE.md)
-- [DHCP](TUTO/Tuto_Linux/DHCP_Linux.md)
 - [DNS :](TUTO/Tuto_Linux/DNS)
   - [Démo DNS](TUTO/Tuto_Linux/DNS/Demo_DNS_Linux.md)
   - [Atelier DNS](TUTO/Tuto_Linux/DNS/DNS_SRVUBUNTU_quete.md)
@@ -118,18 +114,30 @@ Merci de votre visite et bonne exploration ! 🚀
   - [Routeur logique Débian partie 5](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part5.md)
   - [Routeur logique Débian partie 6](TUTO/Tuto_Linux/Routeur_logique/routeur_logique_part6.md)
   - [Routeur logique Débian tuto Reda](TUTO/Tuto_Linux/Routeur_logique/routeur_by_Reda.md)
-- [Installation d'un serveur GLPI](TUTO/Tuto_Linux/Install_GLPI)
+- [Installation d'un serveur GLPI](TUTO/Tuto_Linux/GLPI)
   - [Installation d'un serveur GLPI sur Ubuntu Server](TUTO/Tuto_Linux/Install_GLPI/install_glpi_ubuntu_server.md)
   - [Installation d'un serveur GLPI sur Debian](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
   - [Installation d'un serveur GLPI sur debian via script](TUTO/Tuto_Linux/Install_GLPI/install_glpi_debian.md)
 - [Squid](TUTO/Tuto_Linux/Squid/)
   - [Squid HTTP](TUTO/Tuto_Linux/Squid/squid-HTTP.md)
   - [Squid HTTPS explicite](TUTO/Tuto_Linux/Squid/squid-https-explicite.md)
-- [Pi-Hole installation et configuration](TUTO/Tuto_Linux/pi-hole.md)
-- [Projet Security Onion groupe 1](TUTO/Tuto_Linux/Security_Onion(G1Wild)/README.md)
-- [Configuration OpenVPN basique sur Ubuntu](TUTO/Tuto_Linux/VPN_Guide.md)
 - [Graylog](TUTO/Tuto_Linux/Graylog/)
   - [Installation](TUTO/Tuto_Linux/Graylog/installation_graylog.md)
+  - [Configuration d'une Input](TUTO/Tuto_Linux/Graylog/Graylog_input_setup.md)
+  - [Ajout d'un client Linux](TUTO/Tuto_Linux/Graylog/add_linux_client.md)
+  - [Ajout d'un client Windows](TUTO/Tuto_Linux/Graylog/add_WinServ_client.md)
+- [Rsync](TUTO/Tuto_Linux/Rsync/)
+  - [Notice](TUTO/Tuto_Linux/Rsync/notice.md)
+  - [Préparation disque Raid1 et LVM](TUTO/Tuto_Linux/Rsync/raid1_lvm.md)
+  - [Configuration sauvegarde credentielle](TUTO/Tuto_Linux/Rsync/config_credential.md)
+  - [Configuration sauvegarde complète)](TUTO/Tuto_Linux/Rsync/config_full.md)
+  - [Configuration sauvegarde differentielle](TUTO/Tuto_Linux/Rsync/config_differential.md)
+  - [Commandes basiques Rsync](TUTO/Tuto_Linux/Rsync/command_ref.md)
+- [Configuration OpenVPN basique sur Ubuntu](TUTO/Tuto_Linux/VPN_Guide.md)
+- [Atelier filesystem - Gestion de disque](TUTO/Tuto_Linux/Atelier_filesystem.md)
+- [Création de groupe (démo)](TUTO/Tuto_Linux/DEMO_creation_group.md)
+- [Exercice "machine à café"](TUTO/Tuto_Linux/EXO_CAFE.md)
+- [DHCP](TUTO/Tuto_Linux/DHCP_Linux.md)
 
 </details>
 
@@ -160,22 +168,10 @@ Merci de votre visite et bonne exploration ! 🚀
 </details>
 
 <details>
-<summary><b>Tuto Rsync</b></summary>
-
-- [Notice](TUTO/Tuto_Rsync/notice.md)
-- [Préparation disque Raid1 et LVM](TUTO/Tuto_Rsync/raid1_lvm.md)
-- [Configuration sauvegarde credentielle](TUTO/Tuto_Rsync/config_credential.md)
-- [Configuration sauvegarde complète)](TUTO/Tuto_Rsync/config_full.md)
-- [Configuration sauvegarde differentielle](TUTO/Tuto_Rsync/config_differential.md)
-- [Commandes basiques Rsync](TUTO/Tuto_Rsync/command_ref.md)
-
-</details>
-
-<details>
 <summary><b>Tuto Raspberry</b></summary>
 
 - [Changer adresse IP](TUTO/Tuto_Raspberry/change_IP.md)
-
+- [Pi-Hole installation et configuration](TUTO/Tuto_Raspberry//pi-hole.md)
 </details>
 
 
