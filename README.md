@@ -1,4 +1,4 @@
-# Tutos et Scripts - Apprenti Technicien Système et Réseau
+# Ressources - Apprenti Technicien Système et Réseau
 
 Bienvenue dans mon dépôt GitHub ! Ce dépôt est un espace où je partage mes **tutoriels**, **scripts**, et autres ressources utiles dans mon parcours d'**apprenti administrateur réseau et système**.
 
