@@ -12,17 +12,136 @@ Ce guide détaille toutes les étapes pour installer et configurer Passbolt sur 
 
 ---
 
-## Étape 1 : Configuration DNS dans l'Active Directory
+### Étape 1 : Configuration DNS locale
+1. Accédez à votre serveur DNS local (par exemple, Active Directory ou un autre gestionnaire DNS).
+2. Ajoutez une **entrée DNS A** pour le domaine local de Bitwarden :
+   - **Nom** : `bitwarden` (ou un autre nom, selon vos conventions).
+   - **IP** : Adresse IP locale du serveur Debian où Bitwarden sera installé.
 
-1. Ouvrez la console **Gestion DNS** sur le serveur AD.
-2. Ajoutez un **nouvel enregistrement A** dans la zone DNS de votre domaine :
-   - **Nom de l'hôte** : `passbolt`.
-   - **Adresse IP** : L'adresse IP de votre serveur Debian.
-3. (Optionnel) Ajoutez un enregistrement PTR pour la résolution inverse.
-4. Vérifiez la résolution DNS depuis le réseau :
+3. Si votre DNS prend en charge les enregistrements PTR (résolution inverse) :
+   - Configurez une entrée PTR pour associer l'adresse IP locale au domaine `bitwarden.bartinfo.com`.
+
+4. Vérifiez la résolution DNS depuis le serveur Debian :
    ```bash
-   nslookup passbolt.bartinfo.com
+   nslookup bitwarden.bartinfo.com
    ```
+   - La sortie doit afficher l'adresse IP configurée pour le domaine `bitwarden.bartinfo.com`.
+
+5. Si vous utilisez un routeur comme pfSense pour la gestion DNS locale :
+   - Allez dans **Services > DNS Resolver > Overrides**.
+   - Ajoutez une nouvelle entrée DNS Override :
+     - **Host** : `bitwarden`.
+     - **Domain** : `bartinfo.com`.
+     - **IP Address** : L'adresse IP locale du serveur Bitwarden.
+   - Sauvegardez et appliquez les changements.
+
+---
+
+## Étape 1 bis : Configuration DNS sur le serveur Debian
+
+1. Éditez le fichier `/etc/resolv.conf` pour configurer le serveur DNS local :
+   ```bash
+   nano /etc/resolv.conf
+   ```
+
+2. Ajoutez ou modifiez les lignes suivantes :
+   ```
+   nameserver <IP-DU-SERVEUR-DNS-LOCAL>
+   search bartinfo.com
+   ```
+   - **<IP-DU-SERVEUR-DNS-LOCAL>** : Adresse IP du serveur DNS (par exemple, le serveur Active Directory ou pfSense).
+   - `search bartinfo.com` permet de compléter automatiquement les noms courts (par exemple, taper `bitwarden` au lieu de `bitwarden.bartinfo.com`).
+
+3. Sauvegardez et fermez le fichier.
+
+4. Testez la résolution DNS avec le domaine local :
+   ```bash
+   ping bitwarden.bartinfo.com
+   ```
+
+5. Pour rendre les modifications permanentes si le fichier `/etc/resolv.conf` est géré dynamiquement (par exemple par **systemd-resolved**) :
+   - Modifiez `/etc/systemd/resolved.conf` :
+     ```bash
+     nano /etc/systemd/resolved.conf
+     ```
+   - Ajoutez ou modifiez les lignes suivantes :
+     ```ini
+     [Resolve]
+     DNS=<IP-DU-SERVEUR-DNS-LOCAL>
+     Domains=bartinfo.com
+     ```
+   - Redémarrez le service :
+     ```bash
+     systemctl restart systemd-resolved
+     ```
+
+# Etape 1 bis bis Configuration des DNS statiques via le client DHCP
+
+Si votre machine utilise DHCP pour obtenir une adresse IP, les paramètres DNS sont souvent réécrits par le client DHCP. Cette méthode permet de configurer des DNS statiques sans modifier directement le fichier `/etc/resolv.conf`.
+
+---
+
+## Identifier le fichier de configuration DHCP
+1. Recherchez le fichier de configuration utilisé par votre client DHCP. Les fichiers courants sont :
+   - `/etc/dhcp/dhclient.conf` (client DHCP standard).
+   - `/etc/dhcpcd.conf` (autre implémentation courante).
+
+   Si vous utilisez `dhclient` :
+   ```bash
+   nano /etc/dhcp/dhclient.conf
+   ```
+
+   Si vous utilisez `dhcpcd` :
+   ```bash
+   nano /etc/dhcpcd.conf
+   ```
+
+---
+
+## Ajouter une configuration DNS statique
+1. Ouvrez le fichier correspondant (par exemple, `/etc/dhcp/dhclient.conf`).
+2. Recherchez la section où vous pouvez ajouter les paramètres DNS.
+3. Ajoutez ou modifiez les lignes suivantes :
+
+   Pour **`dhclient.conf`** :
+   ```
+   supersede domain-name-servers <IP-DU-SERVEUR-DNS-LOCAL>;
+   supersede domain-name "bartinfo.com";
+   ```
+
+   Pour **`dhcpcd.conf`** :
+   ```
+   static domain_name_servers=<IP-DU-SERVEUR-DNS-LOCAL>
+   static domain_name="bartinfo.com"
+   ```
+
+   Remplacez `<IP-DU-SERVEUR-DNS-LOCAL>` par l'adresse IP de votre serveur DNS local.
+
+---
+
+## Redémarrer le service DHCP
+1. Appliquez les changements en redémarrant le service DHCP ou les interfaces réseau :
+   ```bash
+   sudo systemctl restart networking
+   ```
+
+2. Vérifiez que les nouveaux paramètres DNS sont pris en compte :
+   ```bash
+   cat /etc/resolv.conf
+   ```
+   Vous devriez voir l'adresse IP définie dans `supersede domain-name-servers`.
+
+---
+
+## Tester la configuration
+1. Testez la résolution DNS pour vérifier si le serveur DNS statique fonctionne :
+   ```bash
+   ping bitwarden.bartinfo.com
+   nslookup bitwarden.bartinfo.com
+   ```
+
+Si les tests réussissent, vos paramètres DNS statiques sont correctement configurés ! 
+
 
 ---
 

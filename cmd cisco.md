@@ -49,3 +49,32 @@ show => permet de voir des choses tel que startup-config
 show running config
 show ip interface
 show startup-config
+
+
+
+Config initial switch vierge:
+
+en
+
+configure terminal => configuration global
+
+? =>  retrouve ce qu'on veut faire
+
+do show run | section line vty
+
+on ferme les ligne 5 a 15
+line vty 5 15 
+
+no login
+transport outup none
+
+
+show ip int br => montre config ip
+show vlan => montre les vlans
+
+
+Rappel réseau
+
+
+configuration trunk
+
