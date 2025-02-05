@@ -36,5 +36,7 @@ Un protocole courant pour l'agrégation de liens est le **LACP** (Link Aggregati
 - **Trunk Port** :  
   - Utilisé pour connecter d'autres commutateurs pour la communication inter-switch.  
   - Transporte des **paquets tagués** appartenant à plusieurs VLAN.  
-  - Applique l'isolation des VLAN.  
+  - Applique l'isolation des VLAN.
+    
+![Capture d'écran 2025-02-05 092605](https://github.com/user-attachments/assets/d1bf96e4-df24-47c5-a7b1-2518eb8f5a73)
 
