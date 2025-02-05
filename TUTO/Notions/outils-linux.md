@@ -82,3 +82,6 @@
 
 Ce document fournit une liste des commandes essentielles pour l'administration Linux.
 
+![Capture d'écran 2025-02-05 095916](https://github.com/user-attachments/assets/5d5d0aba-cbb4-4f0a-8913-6961d52e44af)
+
+
