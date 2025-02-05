@@ -37,5 +37,6 @@ Chaque fichier ou répertoire a une ligne de permission affichée avec la comman
 
 - **ls -l** : Afficher les permissions des fichiers et répertoires.
 
-Les permissions jouent un rôle essentiel en sécurité et en administration système. En connaissant leur fonctionnement, on peut mieux contrôler l'accès aux fichiers et répertoires. 🛠️
+Les permissions jouent un rôle essentiel en sécurité et en administration système.
 
+![Capture d'écran 2025-02-05 095644](https://github.com/user-attachments/assets/c97dee1c-aec8-4e32-99a3-175409c528b5)
