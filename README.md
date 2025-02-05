@@ -179,6 +179,21 @@ Merci de votre visite et bonne exploration ! 🚀
 <summary><b>Notions</b></summary>
 
 - [Les Raid(s)](TUTO/Notions/Raid.md)
+- [Commandes principales sur Linux](TUTO/Notions/cmd-main-linux.md)
+- [Gestions des permissions sur Linux](TUTO/Notions/linux-permissions.md)
+- [Outils utiles sur Linux](TUTO/Notions/outils-linux.md)
+- [Commands Ip sur Windows](TUTO/Notions/cmd-ip-Windows.md)
+- [Outils de l'admin](TUTO/Notions/Outils.md)
+- [Les Vlans](TUTO/Notions/notions_vlan.md)
+- [Filtres Wireshark](Tuto/Notions/Wireshark-filters.md)
+</details>
+
+
+<details>
+<summary><b>Zabbix</b></summary>
+
+- [Installation de Zabbix](TUTO/Zabbix/instal_zabbix.md)
+- [Agent Zabbix](TUTO/Zabbix/debian_agent.md)
 </details>
 
 </details>
