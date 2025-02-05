@@ -66,3 +66,4 @@
 - **snap** : Gestion des paquets sous Snap.  
 - **zypper** : Gestion des paquets sous openSUSE.  
 
+![Capture d'écran 2025-02-05 095758](https://github.com/user-attachments/assets/ff583f86-f928-48bd-9067-663ab2d7df6b)
