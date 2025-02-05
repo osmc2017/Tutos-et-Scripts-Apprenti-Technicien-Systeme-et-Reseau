@@ -80,5 +80,5 @@
 - **su** : Change d'utilisateur dans le terminal.  
 - **screen** : Gère plusieurs sessions de terminal.  
 
-Ce document fournit une liste des commandes essentielles pour l'administration Linux. Si tu souhaites plus de détails ou ajouter des explications, fais-moi signe ! 
+Ce document fournit une liste des commandes essentielles pour l'administration Linux.
 
