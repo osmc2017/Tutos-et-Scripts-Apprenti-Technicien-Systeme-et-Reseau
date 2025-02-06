@@ -1,6 +1,6 @@
 # Ressources - Apprenti Technicien Système et Réseau
 
-Bienvenue dans mon dépôt GitHub ! Ce dépôt est un espace où je partage mes **tutoriels**, **scripts**, et autres ressources utiles dans mon parcours d'**apprenti administrateur réseau et système**.
+Bienvenue dans mon dépôt GitHub ! Ce dépôt est un espace où je partage mes **tutoriels**, **scripts**, et autres ressources utiles dans mon parCours d'**apprenti administrateur réseau et système**.
 
 ## Objectif
 
@@ -183,31 +183,31 @@ Merci de votre visite et bonne exploration ! 🚀
 
 </details>
 
-### [Cours](COURS/)
+### [Cours](Cours/)
 
 <details>
-<summary><b>COURS</b></summary>
+<summary><b>Cours</b></summary>
 
-- [Les Raid(s)](COURS/Raid.md)
-- [Commandes principales sur Linux](COURS/cmd-main-linux.md)
-- [Gestions des permissions sur Linux](COURS/linux-permissions.md)
-- [Outils utiles sur Linux](COURS/outils-linux.md)
-- [Commands Ip sur Windows](COURS/cmd-ip-Windows.md)
-- [Outils de l'admin](COURS/Outils.md)
-- [Les Vlans](COURS/notions_vlan.md)
-- [Filtres Wireshark](COURS/Wireshark-filters.md)
-- [Les adresses MAC](COURS/adresses-MAC.md)
-- [Le modèle OSI](COURS/transmission-OSI.md)
-- [Le modèle TCP/IP](COURS/transmission-TCP-IP.md)
-- [Les trames Ethernet](COURS/trame-ethernet.md)
-- [Les adresses IP](COURS/Adresses%20IP/)
-  - [Adresses IP](COURS/Adresses%20IP/Adresse-IP.md)
-  - [Entête IPV4 et IPv6](COURS/Adresses%20IP/entete-IPv4-et-IPv6.md)
-  - [Structure IPv4](COURS/Adresses%20IP/Structure-IPv4.md)
-  - [Structure IPv6](COURS/Adresses%20IP/Structure-IPv6.md)
-- [Protocoles TCP et UDP](COURS/TCP%20et%20UDP/)
-  - [Protocole TCP](COURS/TCP%20et%20UDP/protocole-TCP.md)
-  - [MSS et TCP](COURS/TCP%20et%20UDP/MSS-TCP.md)
-  - [Protocole UDP](COURS/TCP%20et%20UDP/protocole-UDP.md)
-  - [Les ports réseaux](COURS/TCP%20et%20UDP/Ports-réseaux.md)
+- [Les Raid(s)](Cours/Raid.md)
+- [Commandes principales sur Linux](Cours/cmd-main-linux.md)
+- [Gestions des permissions sur Linux](Cours/linux-permissions.md)
+- [Outils utiles sur Linux](Cours/outils-linux.md)
+- [Commands Ip sur Windows](Cours/cmd-ip-Windows.md)
+- [Outils de l'admin](Cours/Outils.md)
+- [Les Vlans](Cours/notions_vlan.md)
+- [Filtres Wireshark](Cours/Wireshark-filters.md)
+- [Les adresses MAC](Cours/adresses-MAC.md)
+- [Le modèle OSI](Cours/transmission-OSI.md)
+- [Le modèle TCP/IP](Cours/transmission-TCP-IP.md)
+- [Les trames Ethernet](Cours/trame-ethernet.md)
+- [Les adresses IP](Cours/Adresses%20IP/)
+  - [Adresses IP](Cours/Adresses%20IP/Adresse-IP.md)
+  - [Entête IPV4 et IPv6](Cours/Adresses%20IP/entete-IPv4-et-IPv6.md)
+  - [Structure IPv4](Cours/Adresses%20IP/Structure-IPv4.md)
+  - [Structure IPv6](Cours/Adresses%20IP/Structure-IPv6.md)
+- [Protocoles TCP et UDP](Cours/TCP%20et%20UDP/)
+  - [Protocole TCP](Cours/TCP%20et%20UDP/protocole-TCP.md)
+  - [MSS et TCP](Cours/TCP%20et%20UDP/MSS-TCP.md)
+  - [Protocole UDP](Cours/TCP%20et%20UDP/protocole-UDP.md)
+  - [Les ports réseaux](Cours/TCP%20et%20UDP/Ports-réseaux.md)
 </details>
