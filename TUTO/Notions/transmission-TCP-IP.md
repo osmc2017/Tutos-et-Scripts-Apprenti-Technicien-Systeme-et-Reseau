@@ -107,5 +107,3 @@ Le **modèle TCP/IP** est le modèle de référence pour Internet et les réseau
 - Chaque couche encapsule et décapsule les données pour assurer leur transmission.
 - **TCP/IP est conçu pour être robuste et flexible**, supportant une communication fiable (TCP) ou rapide (UDP).
 
-**👉 Comprendre le modèle TCP/IP est essentiel pour administrer et diagnostiquer un réseau, car il reflète directement le fonctionnement de l'Internet moderne.**
-s

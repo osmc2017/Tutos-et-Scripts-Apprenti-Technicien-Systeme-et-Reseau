@@ -94,4 +94,3 @@ L’**ET logique** reste un outil essentiel pour déterminer les réseaux en IPv
 
 Avec l’adoption croissante de l’IPv6, comprendre sa structure et son fonctionnement est **indispensable pour tout administrateur réseau**.
 
-**👉 Maîtriser IPv6 garantit une meilleure compréhension des réseaux modernes et de leur avenir !**

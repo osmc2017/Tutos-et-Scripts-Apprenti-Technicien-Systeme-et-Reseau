@@ -93,4 +93,4 @@ La table MAC est mise à jour avec l’adresse MAC et son port associé, permett
 ---
 
 ## 7. Conclusion
-L’adresse MAC est essentielle pour l’identification et la communication des appareils dans un réseau. Son association avec l’ARP permet la résolution des adresses IP en adresses MAC, et les switches utilisent la table MAC pour optimiser le routage des trames. Bien comprendre leur fonctionnement est crucial pour tout administrateur réseau !
+L’adresse MAC est essentielle pour l’identification et la communication des appareils dans un réseau. Son association avec l’ARP permet la résolution des adresses IP en adresses MAC, et les switches utilisent la table MAC pour optimiser le routage des trames.

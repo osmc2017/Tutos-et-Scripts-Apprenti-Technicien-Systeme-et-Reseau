@@ -109,4 +109,4 @@ Les adresses IPv6 se classent en plusieurs catégories :
 ## 6. Conclusion
 L’adresse IP est essentielle pour l’identification et la communication des appareils sur un réseau. **IPv4** reste largement utilisé, mais **IPv6** s’impose progressivement grâce à son espace d’adressage beaucoup plus grand et ses fonctionnalités améliorées.
 
-**👉 Comprendre la structure des adresses IP et les plages réservées est crucial pour tout administrateur réseau !**
+

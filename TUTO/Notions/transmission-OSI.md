@@ -112,4 +112,4 @@ Le **modèle OSI** est un cadre de référence qui permet de standardiser la com
 - L’**encapsulation** permet d’ajouter les informations nécessaires pour le transport des données.
 - À la réception, le processus de **décapsulation** inverse l’opération pour restituer les données à l’application.
 
-**👉 Comprendre le modèle OSI permet d’analyser et résoudre efficacement les problèmes réseau. Il sert de guide universel dans la conception et le diagnostic des communications informatiques.**
+

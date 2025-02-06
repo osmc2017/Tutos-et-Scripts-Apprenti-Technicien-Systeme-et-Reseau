@@ -107,4 +107,4 @@ L’utilisation de l’**ET logique** est une méthode clé pour identifier un r
 
 Cependant, avec l’augmentation du nombre d’appareils connectés, l’**IPv6** devient de plus en plus nécessaire pour pallier l’épuisement des adresses IPv4.
 
-**👉 Comprendre la structure d'une adresse IPv4 et l'utilisation du ET logique est essentiel pour toute administration réseau et configuration d'infrastructure informatique.**
+
