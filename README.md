@@ -186,7 +186,7 @@ Merci de votre visite et bonne exploration ! 🚀
 ### [Cours](COURS/)
 
 <details>
-<summary><b>Cours</b></summary>
+<summary><b>COURS</b></summary>
 
 - [Les Raid(s)](COURS/Raid.md)
 - [Commandes principales sur Linux](COURS/cmd-main-linux.md)
