@@ -4,7 +4,7 @@ Bienvenue dans mon dépôt GitHub ! Ce dépôt est un espace où je partage mes 
 
 ## Objectif
 
-L'objectif de ce dépôt est de centraliser tout le contenu lié à mon apprentissage et aux projets que je mène dans le domaine des technologies **réseaux** et **systèmes**. Vous y trouverez des **scripts** pratiques, des **astuces** et des **tutoriels** sur divers outils et technologies que je rencontre au quotidien.
+L'objectif de ce dépôt est de centraliser tout le contenu lié à mon apprentissage et aux projets que je mène dans le domaine des technologies **réseaux** et **systèmes**. Vous y trouverez des **scripts** pratiques, des **astuces** et des **tutoriels** sur divers outils et technologies que je rencontre au quotidien. Vous trouverez égalements des cours et notes utiles à l'apprentissage du métier.
 
 ## Contenu
 
@@ -14,6 +14,7 @@ Voici un aperçu de ce que vous trouverez dans ce dépôt :
 - **Scripts** : Automatisation de tâches courantes pour la gestion des systèmes et des réseaux.
 - **Tutoriels** : Guides pratiques sur des sujets techniques, comme la configuration de serveurs, la gestion des réseaux, l'utilisation de VirtualBox, etc.
 - **Ressources** : Fichiers de configuration, exemples de code, et autres documents utiles pour un technicien en réseau et système.
+- **Cours** : Vous trouverez des fiches de cours utilent pour la révision ou l'apprentissage.
 
 ## Pourquoi ce dépôt ?
 
