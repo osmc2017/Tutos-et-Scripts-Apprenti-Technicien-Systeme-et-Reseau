@@ -84,6 +84,7 @@
 - `ip ssh version 2` : Active la version 2 de SSH.
 - `line vty 0 4` : Accède à la configuration des sessions SSH.
 - `transport input ssh` : Active SSH uniquement.
+- `ssh -l "nomde l'utilisateur" 'ip adress'` : permet de se connecter en ssh depuis le prompt à un routeur /switch.
 
 ## 9. Sauvegarde et Restauration
 
