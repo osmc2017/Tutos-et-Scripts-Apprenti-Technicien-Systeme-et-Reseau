@@ -108,6 +108,8 @@
 
 ### **Les 5 rôles FSMO (Flexible Single Master Operation)**
 
+Les rôles FSMO assurent la gestion centralisée d'Active Directory en répartissant des tâches critiques entre les contrôleurs de domaine. Ils garantissent la cohérence des données, la génération d'identifiants uniques, la gestion des domaines, des schémas et la synchronisation, évitant les conflits dans un environnement multi-contrôleurs.
+
 📌 **Forêt** :
 ✅ **Maître de schéma** → Gère les mises à jour du schéma AD.
 ✅ **Maître d’attribution de noms** → Gère la création et suppression de domaines.
