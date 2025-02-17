@@ -76,6 +76,19 @@ route print
 Get-NetRoute
 ```
 
+### ** les principales méthodes de routage**
+
+- **routage direct** : Chaque réseau est connecté à un routeur physique avec des interfaces distinctes. Chaque interface est sur un sous-réseau différent.
+
+- **Routage inter-VLAN (ou "Router-on-a-Stick")** : Un seul routeur utilise une seule interface physique, configurée avec plusieurs sous-interfaces. Chaque sous-interface est associée à un VLAN spécifique, permettant au trafic entre VLANs de transiter par le routeur.
+
+- **Routage statique** : Les routes sont définies manuellement par l'administrateur. Utile pour les petits réseaux mais difficile à maintenir sur des réseaux complexes.
+
+- **Routage dynamique** : Le routeur apprend automatiquement les chemins vers les réseaux via des protocoles comme OSPF, RIP ou BGP. Cela permet une adaptation automatique aux changements de topologie.
+
+- **Routage basé sur des politiques (PBR)** : Permet de rediriger le trafic en fonction de critères spécifiques (adresse source, type de service, etc.) plutôt que seulement l'adresse de destination.
+
+Ces méthodes sont utilisées en fonction de la taille, de la complexité et des besoins du réseau.
 ---
 
 ## **4 - Routage dynamique et protocoles**
