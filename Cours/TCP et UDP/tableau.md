@@ -1,41 +1,52 @@
 # Protocoles et modèle OSI
 
-| Couche OSI           | Protocole        | Nom complet                           | Port(s) Associé(s) | Type (TCP/UDP) |
-|----------------------|-----------------|--------------------------------------|------------------|---------------|
-| Application         | HTTP            | Hypertext Transfer Protocol         | 80               | TCP           |
-| Application         | HTTPS           | Hypertext Transfer Protocol Secure  | 443              | TCP           |
-| Application         | FTP             | File Transfer Protocol              | 21, 20           | TCP           |
-| Application         | FTPS            | File Transfer Protocol Secure       | 990, 989         | TCP           |
-| Application         | SMTP            | Simple Mail Transfer Protocol       | 25               | TCP           |
-| Application         | SMTPS           | Simple Mail Transfer Protocol Secure | 465              | TCP           |
-| Application         | IMAP            | Internet Message Access Protocol    | 143              | TCP           |
-| Application         | IMAPS           | Internet Message Access Protocol Secure | 993         | TCP           |
-| Application         | POP3            | Post Office Protocol 3              | 110              | TCP           |
-| Application         | POP3S           | Post Office Protocol 3 Secure       | 995              | TCP           |
-| Application         | DNS             | Domain Name System                  | 53               | TCP/UDP       |
-| Application         | SNMP            | Simple Network Management Protocol  | 161, 162         | UDP           |
-| Application         | Telnet          | Telnet Protocol                     | 23               | TCP           |
-| Application         | SSH             | Secure Shell                        | 22               | TCP           |
-| Application         | RDP             | Remote Desktop Protocol             | 3389             | TCP           |
-| Application         | LDAP            | Lightweight Directory Access Protocol | 389, 636       | TCP           |
-| Application         | LDAPS           | Lightweight Directory Access Protocol Secure | 636  | TCP           |
-| Application         | NTP             | Network Time Protocol               | 123              | UDP           |
-| Application         | TFTP            | Trivial File Transfer Protocol      | 69               | UDP           |
-| Présentation       | SSL/TLS         | Secure Sockets Layer / Transport Layer Security | - | TCP           |
-| Présentation       | JPEG, GIF, PNG  | Image File Formats                  | -                | -             |
-| Session            | NetBIOS         | Network Basic Input/Output System   | 137-139          | TCP/UDP       |
-| Session            | PPTP            | Point-to-Point Tunneling Protocol   | 1723             | TCP           |
-| Transport          | TCP             | Transmission Control Protocol       | 1-65535          | TCP           |
-| Transport          | UDP             | User Datagram Protocol              | 1-65535          | UDP           |
-| Transport          | SCTP            | Stream Control Transmission Protocol | -               | SCTP          |
-| Transport          | DCCP            | Datagram Congestion Control Protocol | -               | DCCP          |
-| Transport          | QUIC            | Quick UDP Internet Connections      | 443              | UDP           |
-| Réseau            | IP              | Internet Protocol                   | -                | -             |
-| Réseau            | ICMP            | Internet Control Message Protocol   | -                | -             |
-| Réseau            | IGMP            | Internet Group Management Protocol  | -                | -             |
-| Réseau            | ARP             | Address Resolution Protocol         | -                | -             |
-| Liaison de données | PPP             | Point-to-Point Protocol             | -                | -             |
-| Liaison de données | Ethernet        | Ethernet Protocol                   | -                | -             |
-| Liaison de données | Frame Relay     | Frame Relay Protocol                | -                | -             |
-| Physique           | RJ45, Wi-Fi, Fibre optique | Physical Network Interfaces | -   | -             |
+| **Port**  | **Protocole** | **Nom complet** | **Type (TCP/UDP)** | **Couche OSI** |
+|---------|-------------|------------------------------------|----------------|-------------|
+| 20      | FTP        | File Transfer Protocol (Données)  | TCP            | Application |
+| 21      | FTP        | File Transfer Protocol (Contrôle) | TCP            | Application |
+| 22      | SSH        | Secure Shell                      | TCP            | Application |
+| 23      | Telnet     | Telnet Protocol                   | TCP            | Application |
+| 25      | SMTP       | Simple Mail Transfer Protocol     | TCP            | Application |
+| 53      | DNS        | Domain Name System                | TCP/UDP        | Application |
+| 67      | DHCP       | Dynamic Host Configuration Protocol (Serveur) | UDP | Application |
+| 68      | DHCP       | Dynamic Host Configuration Protocol (Client)  | UDP | Application |
+| 69      | TFTP       | Trivial File Transfer Protocol    | UDP            | Application |
+| 80      | HTTP       | Hypertext Transfer Protocol       | TCP            | Application |
+| 110     | POP3       | Post Office Protocol 3            | TCP            | Application |
+| 119     | NNTP       | Network News Transfer Protocol (Usenet) | TCP | Application |
+| 123     | NTP        | Network Time Protocol             | UDP            | Application |
+| 137-139 | NetBIOS    | Network Basic Input/Output System | TCP/UDP        | Session     |
+| 143     | IMAP       | Internet Message Access Protocol  | TCP            | Application |
+| 161-162 | SNMP       | Simple Network Management Protocol | UDP           | Application |
+| 1723    | PPTP       | Point-to-Point Tunneling Protocol | TCP            | Session     |
+| 194     | IRC        | Internet Relay Chat               | TCP            | Application |
+| 389     | LDAP       | Lightweight Directory Access Protocol | TCP | Application |
+| 443     | HTTPS      | Hypertext Transfer Protocol Secure | TCP            | Application |
+| 465     | SMTPS      | Simple Mail Transfer Protocol Secure | TCP | Application |
+| 514     | Syslog     | System Logging Protocol           | UDP            | Application |
+| 636     | LDAPS      | Secure LDAP                       | TCP            | Application |
+| 993     | IMAPS      | Internet Message Access Protocol Secure | TCP | Application |
+| 995     | POP3S      | Post Office Protocol 3 Secure     | TCP            | Application |
+| 1433    | MS-SQL     | Microsoft SQL Server              | TCP            | Application |
+| 1521    | Oracle SQL | Oracle Database                   | TCP            | Application |
+| 3306    | MySQL      | MySQL Database                    | TCP            | Application |
+| 3389    | RDP        | Remote Desktop Protocol           | TCP            | Application |
+| 5060    | SIP        | Session Initiation Protocol (VoIP) | TCP/UDP       | Application |
+| 5432    | PostgreSQL | PostgreSQL Database               | TCP            | Application |
+| 5900    | VNC        | Virtual Network Computing         | TCP            | Application |
+| 8080    | HTTP Alt   | Alternative HTTP Port             | TCP            | Application |
+| 990, 989 | FTPS      | File Transfer Protocol Secure     | TCP            | Application |
+| 1-65535 | TCP        | Transmission Control Protocol     | TCP            | Transport   |
+| 1-65535 | UDP        | User Datagram Protocol            | UDP            | Transport   |
+| -       | SCTP       | Stream Control Transmission Protocol | SCTP       | Transport   |
+| -       | DCCP       | Datagram Congestion Control Protocol | DCCP       | Transport   |
+| 443     | QUIC       | Quick UDP Internet Connections    | UDP            | Transport   |
+| -       | IP         | Internet Protocol                 | -              | Réseau      |
+| -       | ICMP       | Internet Control Message Protocol | -              | Réseau      |
+| -       | IGMP       | Internet Group Management Protocol | -             | Réseau      |
+| -       | ARP        | Address Resolution Protocol       | -              | Réseau      |
+| -       | PPP        | Point-to-Point Protocol           | -              | Liaison de données |
+| -       | Ethernet   | Ethernet Protocol                 | -              | Liaison de données |
+| -       | Frame Relay | Frame Relay Protocol             | -              | Liaison de données |
+| -       | RJ45, Wi-Fi, Fibre optique | Physical Network Interfaces | - | Physique |
 
