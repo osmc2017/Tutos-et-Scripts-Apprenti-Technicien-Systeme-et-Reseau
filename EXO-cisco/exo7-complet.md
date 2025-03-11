@@ -155,11 +155,6 @@ exit
 
 ### **Sur le switch L3 du Site 1**
 
-```bash
-ip route 0.0.0.0 0.0.0.0 192.168.10.254
-ip route 0.0.0.0 0.0.0.0 192.168.20.254
-ip route 0.0.0.0 0.0.0.0 192.168.30.254
-```
 
 ```bash
 interface vlan 10
@@ -179,11 +174,6 @@ ip routing
 
 ### **Sur le switch L3 du Site 2**
 
-```bash
-ip route 0.0.0.0 0.0.0.0 192.168.40.254
-ip route 0.0.0.0 0.0.0.0 192.168.50.254
-ip route 0.0.0.0 0.0.0.0 192.168.60.254
-```
 
 ```bash
 interface vlan 40
@@ -286,56 +276,36 @@ ip address 10.1.1.2 255.255.255.252
 no shutdown
 exit
 ```
+---
 
-### **Sur le Routeur du Site 1**
-
+## **6️⃣ Configuration du serveur DHCP sur le routeur 1**
 ```bash
-interface GigabitEthernet 0/1
-ip address 192.168.10.254 255.255.255.0
-no shutdown
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.30.1
+
+ip dhcp pool VLAN10
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.254
+dns-server 8.8.8.8
 exit
 
-interface GigabitEthernet 0/0
-ip address 10.1.1.1 255.255.255.252
-no shutdown
-exit
-```
-
-### **Sur le Routeur du Site 2**
-
-```bash
-interface GigabitEthernet 0/1
-ip address 192.168.40.254 255.255.255.0
-no shutdown
+ip dhcp pool VLAN20
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.254
+dns-server 8.8.8.8
 exit
 
-interface GigabitEthernet 0/0
-ip address 10.1.1.2 255.255.255.252
-no shutdown
-exit
-```
-
-### **Sur le Routeur du Site 1**
-
-```bash
-interface GigabitEthernet 0/0
-ip address 10.1.1.1 255.255.255.252
-no shutdown
-exit
-```
-
-### **Sur le Routeur du Site 2**
-
-```bash
-interface GigabitEthernet 0/0
-ip address 10.1.1.2 255.255.255.252
-no shutdown
+ip dhcp pool VLAN30
+network 192.168.30.0 255.255.255.0
+default-router 192.168.30.254
+dns-server 8.8.8.8
 exit
 ```
 
 ---
 
-## **6️⃣ Configuration du routage dynamique avec OSPF**
+## **7 Configuration du routage dynamique avec OSPF**
 
 Plutôt que d'utiliser des routes statiques, nous allons configurer OSPF pour permettre aux routeurs d'échanger automatiquement les routes entre les sites.
 
@@ -344,6 +314,7 @@ Plutôt que d'utiliser des routes statiques, nous allons configurer OSPF pour pe
 ```bash
 configure terminal
 router ospf 1
+router-id 1.1.1.1
 network 10.1.1.0 0.0.0.3 area 0   # Annonce le lien inter-site
 network 192.168.10.0 0.0.0.255 area 0   # VLAN 10
 network 192.168.20.0 0.0.0.255 area 0   # VLAN 20
@@ -356,7 +327,8 @@ write memory
 
 ```bash
 configure terminal
-router ospf 1
+router ospf 2
+router-id 2.2.2.2
 network 10.1.1.0 0.0.0.3 area 0   # Annonce le lien inter-site
 network 192.168.40.0 0.0.0.255 area 0   # VLAN 40
 network 192.168.50.0 0.0.0.255 area 0   # VLAN 50
@@ -386,6 +358,9 @@ ping 192.168.40.100
 ```
 
 ✅ **Si le ping fonctionne, OSPF gère maintenant le routage correctement.** 🚀
+
+## SANS OSPF
+
 
 ### **Sur le Routeur du Site 1**
 
